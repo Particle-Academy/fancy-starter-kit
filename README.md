@@ -64,11 +64,20 @@ Tune features in `config/fortify.php` and the create/reset logic in
 
 ## SSR
 
-This kit runs **client-only** out of the box (Inertia without an SSR node
-process — `setupFancyApp` uses `createRoot`). To add Inertia SSR, create a
-`resources/js/ssr.tsx` with `createFancyServer` from
-`@particle-academy/fancy-inertia/server`, point `vite.config.js`'s `laravel({
-ssr })` at it, and run `npm run build && php artisan inertia:start-ssr`.
+Inertia SSR is **wired but off by default** — a fresh install renders
+client-side. `resources/js/ssr.tsx` (`createFancyServer` from
+`@particle-academy/fancy-inertia/server`) renders each page inside the *same*
+Fancy provider tree as `app.tsx`, and `npm run build` produces both the client
+and SSR (`bootstrap/ssr/ssr.js`) bundles.
+
+To turn it on:
+
+1. set `INERTIA_SSR_ENABLED=true` in `.env`
+2. `npm run build`
+3. `php artisan inertia:start-ssr` (keep it running alongside your app)
+
+Inertia falls back to client rendering whenever the SSR daemon isn't reachable,
+so leaving SSR off — or forgetting to start the daemon — never breaks the app.
 
 ## License
 
