@@ -47,8 +47,8 @@ resources/js/
 Vendor Fancy components straight into your app with the CLI:
 
 ```bash
-npx fancy-ui add data-table        # one primitive
-npx fancy-ui add catalog-fms       # a full block (pricing, feature gating, …)
+npx fancy-cli@latest add data-table    # one primitive
+npx fancy-cli@latest add catalog-fms   # a full block (pricing, feature gating, …)
 ```
 
 Browse everything at https://ui.particle.academy/packages, or ask the
