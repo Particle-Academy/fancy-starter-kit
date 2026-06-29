@@ -49,6 +49,8 @@ class HandleInertiaRequests extends Middleware
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),
             ],
+            // Fortify sets a session `status` after actions like the password-reset email.
+            'status' => fn () => $request->session()->get('status'),
         ];
     }
 }

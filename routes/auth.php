@@ -16,4 +16,8 @@ use Inertia\Inertia;
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+
+    Route::redirect('settings', '/settings/profile');
+    Route::get('settings/profile', fn () => Inertia::render('settings/Profile'))->name('settings.profile');
+    Route::get('settings/password', fn () => Inertia::render('settings/Password'))->name('settings.password');
 });

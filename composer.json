@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "particle-academy/fancy-starter-kit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "A Laravel + Inertia + React 19 + Tailwind v4 starter kit with Fancy UI (Fancy Core) and Fortify auth preinstalled.",
+    "keywords": ["laravel", "inertia", "react", "tailwind", "fancy-ui", "starter-kit"],
     "license": "MIT",
     "require": {
         "php": "^8.3",
