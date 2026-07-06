@@ -13,20 +13,20 @@ const JUMP_OFFS: { title: string; blurb: string; href: string; external?: boolea
     },
     {
         title: 'Read the docs',
-        blurb: 'Installation, theming, layouts, page transitions, SSR, SEO, and the Human+ guide.',
+        blurb: 'Theming, layouts, page transitions, SSR, SEO, and the Human+ guide.',
         href: 'https://ui.particle.academy/docs',
         external: true,
     },
     {
         title: 'Pick a design direction',
         blurb: '20 Inspiration Gallery styles — one studio site designed 20 ways, from Swiss-minimal to agent-native.',
-        href: 'https://ui.particle.academy/gallery',
+        href: 'https://ui.particle.academy/inspiration',
         external: true,
     },
     {
-        title: 'Grab a starter kit',
-        blurb: 'Full-app templates (Shop-n-Sub = catalog + FMS) and vendorable blocks via `npx fancy-ui add`.',
-        href: 'https://ui.particle.academy/starter-kits',
+        title: 'Vendor a feature block',
+        blurb: 'Drop whole features into this app — `npx fancy-cli add catalog-fms` vendors Shop-n-Sub\'s catalog + FMS storefront (pricing, perks, feature gating) as source you own.',
+        href: 'https://ui.particle.academy/packages/catalog-fms',
         external: true,
     },
     {
@@ -145,7 +145,7 @@ export default function Welcome() {
                     </code>
                     . Add components with{' '}
                     <code className="rounded bg-zinc-200 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
-                        npx fancy-ui add &lt;name&gt;
+                        npx fancy-cli add &lt;name&gt;
                     </code>
                     .
                 </div>

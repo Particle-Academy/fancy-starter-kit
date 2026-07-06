@@ -6,7 +6,7 @@ type Auth = { user: { name: string } | null };
 
 const CARDS = [
     { title: 'Browse components', blurb: 'Find the right Fancy primitive for the screen you\'re building.', href: 'https://ui.particle.academy/packages', external: true },
-    { title: 'Add a component', blurb: 'npx fancy-ui add <name> vendors the source straight into your app.', href: 'https://ui.particle.academy/docs', external: true },
+    { title: 'Add a component', blurb: 'npx fancy-cli add <name> vendors the source straight into your app.', href: 'https://ui.particle.academy/docs', external: true },
     { title: 'Account settings', blurb: 'Update your profile and password.', href: '/settings/profile', external: false },
 ];
 
