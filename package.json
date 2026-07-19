@@ -23,10 +23,10 @@
     "dependencies": {
         "@inertiajs/react": "^3.5.0",
         "@particle-academy/fancy-echarts": "^5.0.0",
-        "@particle-academy/fancy-inertia": "^0.9.2",
+        "@particle-academy/fancy-inertia": "^0.9.3",
         "@particle-academy/fancy-pwa": "^0.1.7",
         "@particle-academy/fancy-query": "^0.5.0",
-        "@particle-academy/fancy-screens": "^0.4.3",
+        "@particle-academy/fancy-screens": "^0.5.0",
         "@particle-academy/react-fancy": "^4.13.0",
         "@tanstack/react-query": "^5.101.2",
         "react": "^19.2.7",
