@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.15] - 2026-07-22
+
+### Security
+
+- `guzzlehttp/guzzle` **7.12.3 → 7.15.1**, clearing four Dependabot advisories:
+  Proxy-Authorization headers leaking to origin servers on cross-host redirect,
+  host-only cookie scope not being preserved, unbounded response cookies (DoS),
+  and URI fragments disclosed in redirect `Referer` headers.
+
+  **Nothing to do** — Guzzle is a transitive dependency; this is a lockfile
+  bump. It matters here because `laravel new --using=…fancy-starter-kit`
+  installs from this repo's lockfile, so a stale lock ships the vulnerable
+  Guzzle to every new project.
+
 ## [1.1.14] - 2026-07-21
 
 ### Changed
