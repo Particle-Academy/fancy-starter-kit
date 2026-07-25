@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.17] - 2026-07-25
+
+Lockstep with a shipped dependency. **Upgrading requires no action.**
+
+### Changed
+
+- **`@particle-academy/fancy-query` 0.5.0 → 0.6.0.** `poll.while` now also
+  accepts a predicate (`() => boolean`), so missed-broadcast recovery can run off
+  your own in-flight state instead of waiting on a `stream.started` that may
+  never arrive. Purely additive — `while` still defaults to `"streaming"`, and
+  the kit's own code does not use `poll`.
+
 ## [1.1.16] - 2026-07-24
 
 Dependency refresh. No application code, scaffolding, or configuration changed —
