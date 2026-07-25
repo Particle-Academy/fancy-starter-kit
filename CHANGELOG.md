@@ -11,6 +11,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.16] - 2026-07-24
+
+Dependency refresh. No application code, scaffolding, or configuration changed —
+**upgrading requires no action.**
+
+### Changed
+
+- **PHP:** `laravel/framework` 13.17.0 → 13.22.0, `laravel/fortify` 1.36.2 →
+  1.37.3, `inertiajs/inertia-laravel` 3.1.0 → 3.1.1, `nunomaduro/collision`
+  8.9.4 → 8.9.5, `phpunit/phpunit` 12.5.30 → 12.5.31, plus ten transitive
+  updates.
+- **JS:** `@inertiajs/react` 3.5.0 → 3.6.1, `react` + `react-dom` 19.2.7 →
+  19.2.8, `vite` 8.1.0 → 8.1.5, `tailwindcss` + `@tailwindcss/vite` 4.3.1 →
+  4.3.3, `@tanstack/react-query` 5.101.2 → 5.101.4, `@vitejs/plugin-react`
+  6.0.3 → 6.0.4, `laravel-vite-plugin` 3.1.0 → 3.1.3, `@types/node` 26.0.1 →
+  26.1.1.
+- **Fortify 1.37 adds passkey support, which grows the install.** It pulls
+  `laravel/passkeys` plus a WebAuthn stack (`web-auth/webauthn-lib`,
+  `web-auth/cose-lib`, `spomky-labs/cbor-php`, `spomky-labs/pki-framework`) and
+  four `symfony/*` serializer packages — 15 new transitive packages in total.
+  **Nothing is enabled by default** and no scaffolding changed, so there is
+  nothing to do; a fresh scaffold simply installs more than it used to.
+
+### Security
+
+- Refreshes `composer.lock` so GitHub's dependency graph re-reads it. The four
+  `guzzlehttp/guzzle` advisories fixed back in 1.1.15 were still being reported
+  as open because the graph had not re-parsed the lock since that release — it
+  was still reading guzzle as 7.12.3. The locked version was, and remains,
+  7.15.1: **no released kit was vulnerable in the interim.**
+
 ## [1.1.15] - 2026-07-22
 
 ### Security
