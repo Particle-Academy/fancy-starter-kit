@@ -11,6 +11,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.18] - 2026-07-28
+
+### Fixed
+
+- **Lockfile now pulls `react-fancy` 4.17.1, which fixes a `TimePicker` crash.**
+  4.17.0 threw `Rendered more hooks than during the previous render` the first
+  time a `mode="view"` TimePicker was clicked into edit mode — four `useCallback`s
+  sat below the early return, so the two modes ran different numbers of hooks.
+  The field vanished from the page and the error named none of the responsible
+  code.
+
+  The declared range (`^4.16.0`) already allowed the fix, but **a fresh
+  `laravel new` installs from this lockfile**, so every new app would have
+  scaffolded with the broken version until this release.
+
+  Verified the way the rule requires — not just a green `npm run build`: fresh
+  scaffold, `npm run dev`, `/`, `/login` and `/register` loaded in a real
+  browser, Vite HMR connected and the console clean. Dev mode is checked
+  explicitly because a build-only check is exactly what let 1.1.2 ship with a
+  permanently broken dev server.
+
 ## [1.1.17] - 2026-07-25
 
 Lockstep with a shipped dependency. **Upgrading requires no action.**
