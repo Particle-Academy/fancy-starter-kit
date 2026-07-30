@@ -11,6 +11,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.19] - 2026-07-30
+
+Dependency and agent-guidance refresh. Existing applications do not need to
+change; these updates affect newly generated projects and developers who choose
+to update their dependencies.
+
+### Added
+
+- Root-level `AGENTS.md` with Fancy UI application architecture, Human+
+  interactive-component conventions, commands, and verification guidance.
+- Root-level `CLAUDE.md` imports the same canonical instructions so the two
+  agent entry points cannot drift.
+
+### Changed
+
+- **Laravel and PHP:** `laravel/framework` 13.22.0 → 13.23.0,
+  `inertiajs/inertia-laravel` 3.1.1 → 3.2.1, `laravel/pao` 1.1.2 → 1.1.3,
+  `laravel/pint` 1.29.3 → 1.30.0, and PHPUnit 12.5.31 → 12.5.33, plus current
+  compatible transitive packages. PHPUnit stays on 12 because PHPUnit 13
+  requires PHP 8.4 while the kit intentionally supports PHP 8.3.
+- **Fancy UI:** `@particle-academy/fancy-inertia` 0.9.3 → 0.9.5 and
+  `@particle-academy/react-fancy` 4.17.1 is now the declared minimum as well as
+  the locked version.
+- **Frontend:** Vite 8.1.5 → 8.2.0, TypeScript 6.0.3 → 7.0.2,
+  `concurrently` 9.2.4 → 10.0.4, React 19.2.7 → 19.2.8, Inertia React 3.5.0 →
+  3.6.1, Tailwind CSS 4.3.1 → 4.3.3, and the remaining direct npm dependencies
+  to their current stable releases.
+
+### Verified
+
+- TypeScript 7 typecheck, PHP test suite (7 tests / 15 assertions), client + SSR
+  production build, Composer audit, and npm audit.
+- Clean clone through `composer run setup`, followed by a Vite dev-mode browser
+  smoke of `/`, `/login`, and `/register`; all three rendered with HTTP 200 and
+  no console or page errors.
+
 ## [1.1.18] - 2026-07-28
 
 ### Fixed
@@ -115,5 +151,10 @@ Dependency refresh. No application code, scaffolding, or configuration changed �
   shipped an `app.blade.php` missing `@viteReactRefresh`, which a production
   build cannot catch.
 
-[Unreleased]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.14...HEAD
+[Unreleased]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.19...HEAD
+[1.1.19]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.18...v1.1.19
+[1.1.18]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.17...v1.1.18
+[1.1.17]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.16...v1.1.17
+[1.1.16]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.15...v1.1.16
+[1.1.15]: https://github.com/particle-academy/fancy-starter-kit/compare/v1.1.14...v1.1.15
 [1.1.14]: https://github.com/particle-academy/fancy-starter-kit/releases/tag/v1.1.14
