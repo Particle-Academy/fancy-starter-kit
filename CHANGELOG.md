@@ -11,6 +11,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.20] — 2026-07-31
+
+### Security
+
+- **Takes `fancy-inertia` 0.9.6**, which fixes two high-severity ReDoS
+  vulnerabilities in `<Seo>` (CodeQL `js/polynomial-redos`). The canonical and
+  image helpers trimmed slashes with a regex whose quantifier backtracks, at a
+  cost quadratic in the input length — on a code path that runs on every page
+  render.
+
+  **A fresh `laravel new --using=particle-academy/fancy-starter-kit` pulls this
+  lockfile**, so every new app scaffolded before this shipped with the
+  vulnerable version. Nothing to adapt: behaviour is identical.
+
+### Changed
+
+- **Takes `react-fancy` 4.18.0** — navigation primitives (`Navbar.Item`,
+  `Sidebar.Item`, `Menu.Item`, `MobileMenu.Item`, `Breadcrumbs.Item`) now accept
+  an `as` prop, so an Inertia `<Link>` can render in their place instead of the
+  plain `<a href>` that made nav chrome a full page load. **No action needed** —
+  the default is unchanged.
+
+  Verified in dev mode against a running scaffold, not just built: the page
+  renders with 0 console errors and 0 warnings.
+
 ## [1.1.19] - 2026-07-30
 
 Dependency and agent-guidance refresh. Existing applications do not need to
