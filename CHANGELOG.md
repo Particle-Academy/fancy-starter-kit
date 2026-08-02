@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.21] — 2026-08-02
+
+### Changed
+
+- **react-fancy 4.18.0 → 4.19.0**, which adds the `brand` / `primary-*` /
+  `secondary-*` colour scheme. Purely additive: new utilities become available,
+  nothing existing changes meaning. Scaffolds can now use `bg-brand` and the
+  theme-aware `secondary-*` neutrals, and rebrand by redefining one token:
+
+  ```css
+  @theme { --color-brand: var(--color-emerald-600); }
+  ```
+
+  Bumped in the same session react-fancy shipped, per the kit's lockstep rule —
+  a fresh `laravel new` pulls this lockfile, so a stale kit hands every new user
+  a stale package.
+
 ## [1.1.20] — 2026-07-31
 
 ### Security
