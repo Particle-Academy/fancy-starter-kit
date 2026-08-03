@@ -11,6 +11,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.22] — 2026-08-03
+
+### Changed
+
+- Dependency refresh: `fancy-screens` 0.6.0, `fancy-inertia` 0.9.7,
+  `react-fancy` 4.19.1.
+
+  fancy-screens 0.6 adds optional node ids and `<Screen doc={…}>`, which is
+  what makes a schema-driven screen addressable by an agent afterwards. Nothing
+  in the scaffold changes; existing screens are untouched.
+
+### Fixed
+
+- **A fresh scaffold could not `npm install`.** Moving to fancy-screens 0.6
+  tripped an `ERESOLVE` failure: `fancy-inertia@0.9.6` declared its optional
+  `fancy-screens` peer as `^0.4.0 || ^0.5.0`, and a caret on a `0.x` locks the
+  minor — so 0.6.0 read as a conflict rather than an upgrade. Fixed upstream in
+  `fancy-inertia@0.9.7` and pinned here.
+
+  It only failed on a *clean* tree; installing into the existing lockfile
+  resolved fine, which is why the smoke for this release builds a scaffold from
+  scratch rather than running `npm install` in the repo. Verified end to end:
+  clean install, `vite build`, `php artisan test`, and `npm run dev` with a
+  clean browser console on the welcome, login and register pages.
+
 ## [1.1.21] — 2026-08-02
 
 ### Changed
