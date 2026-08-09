@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.27] — 2026-08-09
+
+### Changed
+
+- `react-fancy` 5.3.0 → **5.4.0** — adds `<Brand.Mark>` (the square logo tile)
+  and `<Eyebrow>` (the mono section running head). Purely additive.
+
+  Same session as upstream, per the lockstep rule. Dev-mode smoked.
+
 ## [1.1.26] — 2026-08-09
 
 ### Changed
