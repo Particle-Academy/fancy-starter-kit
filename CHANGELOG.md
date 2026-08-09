@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.26] — 2026-08-09
+
+### Changed
+
+- `react-fancy` 5.2.0 → **5.3.0** — adds `<Card.Media>` (fixed-ratio thumbnail
+  region with corner slots) and `<Card interactive>`. Purely additive; an
+  existing `Card` renders identically.
+
+  Shipped the same session as upstream, per the lockstep rule. Dev-mode smoked.
+
 ## [1.1.25] — 2026-08-09
 
 ### Changed
