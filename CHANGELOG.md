@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.36] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/react-fancy` to **5.13.1** (dep + lockfile).
+
+  5.13.x makes the kit tree-shakable: a consumer importing one component used to
+  pull ~1.13 MB and now pulls ~33 kB. Per-component subpaths
+  (`@particle-academy/react-fancy/badge`) are available, but the **barrel gets
+  the same benefit**, so this scaffold's imports are left as they are.
+
 ## [1.1.35] — 2026-08-09
 
 ### Changed
