@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.37] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/react-fancy` to **5.15.0** (dep + lockfile), picking up
+  `StatList` (5.14.0) and the `Container` / `Section` / `Grid` layout primitives
+  (5.15.0).
+
 ## [1.1.36] — 2026-08-09
 
 ### Changed
