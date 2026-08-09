@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.29] — 2026-08-09
+
+### Changed
+
+- `react-fancy` 5.5.0 → **5.6.1** — adds `<Stat>` / `<Stat.Band>` (display
+  figure + band) and `<IndexList>` (numbered stretched-link rows), each with
+  stable per-part handles. Purely additive.
+
+  Same session as upstream, per the lockstep rule.
+
 ## [1.1.28] — 2026-08-09
 
 ### Changed
