@@ -11,6 +11,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.24] — 2026-08-09
+
+### Security
+
+- **`league/commonmark` 2.8.3 → 2.9.0**, clearing six advisories — four high,
+  two medium — covering denial of service via crafted Markdown (quadratic-time
+  parsing, colliding heading slugs, duplicate footnote definitions, adjacent
+  inline attribute blocks, deeply nested XML output) and an unsafe-link filter
+  bypass in the AttributesExtension via embedded control bytes.
+
+  It arrives transitively through `laravel/framework`, so it is a **lockfile**
+  fix — which is exactly the kind that matters here: `laravel new` installs this
+  repo's lockfile, so every scaffold created since the advisories landed got the
+  vulnerable version regardless of what its own constraints allowed.
+
+  **What you must do:** on a new scaffold, nothing. On an existing one,
+  `composer update league/commonmark`.
+
+### Changed
+
+- Dependency refresh: `fancy-query` 0.7.0 → **0.8.0** (adds the Live Contract;
+  purely additive) and `react-fancy` 5.0.0 → **5.1.0**.
+
+  `fancy-query`'s caret is on a `0.x`, which locks the MINOR — so `^0.7.0` could
+  never have resolved 0.8.0 on its own, and the range had to move for the kit to
+  pick it up at all.
+
+- Verified in **dev mode**, not only via `npm run build`: Vite connected, React
+  Refresh active, welcome + login + register rendering with a clean console. The
+  kit shipped a dev-mode-broken release once because the ship checks only ever
+  built.
+
+## [1.1.23] — 2026-08-08
+
+### Changed
+
+- Took the kit onto the 0.5 releases: `fancy-echarts` 6.0.0, `fancy-inertia`
+  0.10.1, `fancy-pwa` 0.2.0, `fancy-query` 0.7.0, `fancy-screens` 0.7.0,
+  `react-fancy` 5.0.0.
+- `CLAUDE.md` is now a symlink to `AGENTS.md`.
+
+> Recorded after the fact — this release was tagged without a changelog entry.
+
 ## [1.1.22] — 2026-08-03
 
 ### Changed
