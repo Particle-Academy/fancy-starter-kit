@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.34] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/react-fancy` to **5.12.0** (dep + lockfile). `Toast` now
+  takes an `action`, so undo can be a real button rather than a countdown; a
+  toast carrying one no longer auto-dismisses.
+
 ## [1.1.33] — 2026-08-09
 
 ### Changed
