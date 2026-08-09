@@ -11,6 +11,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.31] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/react-fancy` to **5.8.0** (dep + lockfile).
+
+  5.8.0 fixes seven components that silently dropped `data-*` and `aria-*` props
+  — `Switch`, `Checkbox`, `CheckboxGroup`, `RadioGroup`, `MultiSwitch`, `Field`
+  and `Table.Row` — so handles put on them now reach the DOM.
+
+  The caret already admitted 5.8.0; the **lockfile** is the reason this release
+  exists. `laravel new` installs from the committed lockfile, so a fresh scaffold
+  would have kept getting 5.7.0 no matter what the range said.
+
+  Smoked in **dev mode**, not just `build`: `vite` boots, the transformed entry
+  serves, and react-fancy's optimized dep bundle loads clean. That check exists
+  because 1.1.2 shipped with dev mode broken for everyone and a green `build` did
+  not notice.
+
 ## [1.1.30] — 2026-08-09
 
 ### Changed
