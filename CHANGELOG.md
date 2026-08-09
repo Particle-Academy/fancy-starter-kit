@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.30] — 2026-08-09
+
+### Changed
+
+- `react-fancy` 5.6.1 → **5.7.0** — adds `<PullQuote>`. Purely additive.
+  Same session as upstream, per the lockstep rule.
+
 ## [1.1.29] — 2026-08-09
 
 ### Changed
