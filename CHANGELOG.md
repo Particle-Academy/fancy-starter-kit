@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.25] — 2026-08-09
+
+### Changed
+
+- `react-fancy` 5.1.0 → **5.2.0** — `<Heading>` gains display sizes `3xl`–`7xl`
+  with display tracking. Purely additive; every existing size is unchanged.
+
+  Shipped here the same session it shipped upstream, because `laravel new`
+  installs this repo's lockfile: a kit left behind hands stale packages to every
+  new scaffold, regardless of what the constraints allow.
+
+  Dev-mode smoked again (Vite connected, React Refresh active, clean console),
+  not only built.
+
 ## [1.1.24] — 2026-08-09
 
 ### Security
