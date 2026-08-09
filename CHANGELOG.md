@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.32] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/react-fancy` to **5.9.0** (dep + lockfile).
+
+  5.9.0 moves the kit's base styles into `@layer base`, so a Tailwind utility
+  passed through `className` finally wins — previously the unlayered base styles
+  outranked every utility, silently.
+
+  **Worth knowing on upgrade:** overrides that were previously ignored now apply.
+  A `className` left in place believing it did nothing will start taking effect.
+  Nothing in this scaffold relied on that, and dev + build render clean.
+
+  Dev-smoked: `vite` boots, the entry transforms, and all 7 `@layer base` blocks
+  are present in the CSS actually served.
+
 ## [1.1.31] — 2026-08-09
 
 ### Changed
