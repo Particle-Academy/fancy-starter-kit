@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.35] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/fancy-inertia` to **0.11.0** (dep + lockfile). Adds
+  `appUpdate` on `setupFancyApp`, which mounts `AppUpdateAlert` inside Inertia's
+  `<App>` — previously there was no working mount point for it at all.
+
+  Not enabled in the scaffold by default; opt in with
+  `setupFancyApp({ ..., appUpdate: true })`.
+
 ## [1.1.34] — 2026-08-09
 
 ### Changed
