@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.33] — 2026-08-09
+
+### Changed
+
+- `@particle-academy/react-fancy` to **5.11.0** (dep + lockfile), covering 5.10.0
+  and 5.11.0:
+
+  - `PromptInput` now hands back the actual `File` on drop, so attachments can be
+    uploaded — previously only `{ id, name, bytes }` survived. Its `📎 attach`
+    button also works now; it had shipped with a no-op handler.
+  - Circular `Progress` accepts a pixel `size` and `strokeWidth`, and its named
+    diameters ship as real CSS rather than inline styles.
+
+  Dev-smoked: `vite` boots, the entry transforms, and the CSS actually served
+  carries all 7 `@layer base` blocks and all 3 Progress diameter rules.
+
 ## [1.1.32] — 2026-08-09
 
 ### Changed
