@@ -11,6 +11,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.38] — 2026-08-10
+
+### Changed
+
+- **`react-fancy` 5.15.0 → 5.16.0** (dep + lockfile). Adds `JsonEditor`, a
+  key/value editor that can impose declared types on untyped JSON; fixes
+  `aria-sort` on sortable `Table.Column` headers, and `data-*`/`aria-*`
+  forwarding on `Table`, `Table.Head`, `Table.Body`, `Table.Column` and
+  `ColorPicker`.
+
+  The caret range already admitted 5.16.0 — the **lockfile** is the part that
+  matters here, because `laravel new` pulls it verbatim and a stale lock ships
+  stale packages to every new project regardless of what the range permits.
+
+  **What you must do:** nothing. Verified with `npm run build` and a real
+  dev-mode smoke: Vite ready with zero errors, `@react-refresh` and the TSX
+  entry both served 200, `react-fancy` resolving. Dev mode is checked because
+  building is not enough — 1.1.2 shipped with dev mode broken the whole time,
+  since ship-time checks ran `npm run build` and never `npm run dev`.
+
 ## [1.1.37] — 2026-08-09
 
 ### Changed
