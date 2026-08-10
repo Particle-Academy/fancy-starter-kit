@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.39] — 2026-08-10
+
+### Changed
+
+- **`react-fancy` 5.16.0 → 5.17.0** (dep + lockfile). Upstream this release is
+  BREAKING: `Field` no longer spaces itself via an adjacent-sibling margin,
+  because that margin fired regardless of layout direction and pushed the
+  right-hand cell of any grid row 16px down. Spacing is the container's job now.
+
+  **What you must do:** nothing. This kit does not use `Field` anywhere, so
+  there is no stacked form to migrate. If you add one, space it with
+  `space-y-4` on the wrapper (or `gap-4` if it is already flex or grid) —
+  that restores exactly the rhythm the old rule produced, measured at 72px.
+
+  Verified with `npm run build` and a dev-mode smoke: Vite ready with zero
+  errors, `@react-refresh` and the TSX entry both 200.
+
 ## [1.1.38] — 2026-08-10
 
 ### Changed
