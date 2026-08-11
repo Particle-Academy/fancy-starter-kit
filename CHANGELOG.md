@@ -9,6 +9,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.41 — 2026-08-11
+
+### Changed
+
+- **`@particle-academy/fancy-screens` 0.7.0 → 0.7.1**, and the declared minimum
+  moves with it.
+- **`@particle-academy/fancy-doc-commons` 0.1.0 → 0.4.0** — a TRANSITIVE that had
+  been pinned three minors back in the lockfile.
+
+  This is the failure mode the kit is most exposed to and the least likely to
+  notice: `package.json` looked entirely current, every declared range already
+  permitted the newer versions, and `npm outdated` on the direct dependencies
+  said nothing. But `laravel new` installs from the LOCKFILE, so every new app
+  scaffolded from this kit was getting doc-commons 0.1.0.
+
+  fancy-screens 0.7.1 is also what widens its `fancy-doc-commons` range to
+  `>=0.4 <2.0`; on 0.7.0 the resolver had no reason to move off the locked 0.1.0.
+
+### Verified
+
+- 7 tests / 15 assertions, client + SSR production build, and a **dev-mode**
+  browser check: `npm run dev` + `php artisan serve`, `@vite/client` and
+  `/@react-refresh` both served, welcome page rendered, console clean. Dev mode
+  is checked because building is not the same as running — v1.1.2 shipped with
+  dev mode broken for exactly that reason.
+
+---
+
 ## [Unreleased]
 
 ## [1.1.40] — 2026-08-11
