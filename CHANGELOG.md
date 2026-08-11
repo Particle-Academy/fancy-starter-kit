@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.42 — 2026-08-11
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.17.1 → 5.18.0.** `FileBrowser` gains an
+  opt-in "New folder" button: pass `onCreateFolder` and it appears, leave it off
+  and nothing renders. Additive — nothing in this kit changes behaviour.
+
+### Verified
+
+- 7 tests / 15 assertions, client + SSR build, and a dev-mode browser check
+  (`npm run dev` + `php artisan serve`, `@vite/client` and `/@react-refresh`
+  served, welcome page rendered, console clean).
+
+---
+
 ## 1.1.41 — 2026-08-11
 
 ### Changed
