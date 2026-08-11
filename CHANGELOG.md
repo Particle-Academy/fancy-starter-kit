@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.40] — 2026-08-11
+
+### Changed
+
+- **`react-fancy` 5.17.0 → 5.17.1** (dep + lockfile). Fixes a `Modal` growing
+  taller than the viewport and stranding its content — only `size="full"` had a
+  max-height, so every other size, including the `md` default, was vertically
+  unbounded.
+
+  **What you must do:** nothing. Verified with `npm run build` and a dev-mode
+  smoke: Vite ready with zero errors, `@react-refresh` and the TSX entry both 200.
+
 ## [1.1.39] — 2026-08-10
 
 ### Changed
