@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.43 — 2026-08-11
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.18.0 → 5.19.0.** `Sidebar` gains an
+  `embedded` prop for rails inside a container that owns its own chrome.
+  Additive — nothing in this kit changes behaviour.
+
+### Verified
+
+- 7 tests / 15 assertions, client + SSR build, dev-mode browser check with a
+  clean console.
+
+---
+
 ## 1.1.42 — 2026-08-11
 
 ### Changed
