@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.44 — 2026-08-11
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.19.0 → 5.20.0.** `AudioViewer` and
+  `VideoViewer` expose `preload` and now default to `metadata` instead of
+  letting the browser choose `auto`. If you render either and relied on the file
+  being fully buffered before playback, pass `preload="auto"`.
+
+### Verified
+
+- 7 tests / 15 assertions, client + SSR build, dev-mode browser check, clean
+  console.
+
+---
+
 ## 1.1.43 — 2026-08-11
 
 ### Changed

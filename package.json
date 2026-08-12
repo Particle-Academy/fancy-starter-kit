@@ -27,7 +27,7 @@
         "@particle-academy/fancy-pwa": "^0.2.0",
         "@particle-academy/fancy-query": "^0.8.0",
         "@particle-academy/fancy-screens": "^0.7.1",
-        "@particle-academy/react-fancy": "^5.19.0",
+        "@particle-academy/react-fancy": "^5.20.0",
         "@tanstack/react-query": "^5.101.4",
         "react": "^19.2.8",
         "react-dom": "^19.2.8"
