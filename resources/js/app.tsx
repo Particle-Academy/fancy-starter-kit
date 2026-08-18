@@ -1,10 +1,16 @@
 import { createInertiaApp } from '@inertiajs/react';
 import { setupFancyApp } from '@particle-academy/fancy-inertia';
-import { Toast } from '@particle-academy/react-fancy';
+import { initTheme, Toast } from '@particle-academy/react-fancy';
 import type { ComponentType, ReactNode } from 'react';
 import '@particle-academy/react-fancy/styles.css';
 
 const appName = import.meta.env.VITE_APP_NAME ?? 'Fancy';
+
+// The inline script in app.blade.php has already painted the right theme; this
+// is what keeps it right afterwards, by following the OS while the preference is
+// "system". The key matches that script -- change both together or a saved
+// choice is silently ignored.
+initTheme({ storageKey: 'fancy.theme' });
 
 /**
  * App-wide providers mounted above the Inertia outlet — they survive page

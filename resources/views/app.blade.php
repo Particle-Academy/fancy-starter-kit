@@ -12,7 +12,12 @@
         (function () {
             try {
                 var t = localStorage.getItem('fancy.theme');
-                var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                // Only 'light'/'dark' count as a choice; anything else means
+                // follow the system, which is what initTheme() decides a moment
+                // later. If the two disagree the page paints twice.
+                var dark = (t === 'light' || t === 'dark')
+                    ? t === 'dark'
+                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (dark) document.documentElement.classList.add('dark');
             } catch (e) { /* noop */ }
         })();

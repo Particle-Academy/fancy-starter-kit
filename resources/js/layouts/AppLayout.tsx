@@ -1,3 +1,4 @@
+import { ThemeToggle } from '../components/ThemeToggle';
 import { Head, Link, router, usePage } from '@inertiajs/react';
 import { Button, cn } from '@particle-academy/react-fancy';
 import type { ReactNode } from 'react';
@@ -46,6 +47,7 @@ export function AppLayout({ title, children }: { title?: string; children: React
                     </div>
                     <div className="flex items-center gap-3">
                         {user && <span className="hidden text-sm text-zinc-500 sm:inline">{user.name}</span>}
+                        <ThemeToggle />
                         <Button variant="ghost" size="sm" onClick={() => router.post('/logout')}>
                             Sign out
                         </Button>

@@ -9,6 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.45 — 2026-08-18
+
+### Added
+
+- **A working light / dark / system theme control.** A fresh scaffold now ships
+  a `ThemeToggle` in the app header, on react-fancy 5.21.0's new theme
+  controller.
+
+### Fixed
+
+- **The theme never followed the OS after first paint.** The inline script in
+  `app.blade.php` read `prefers-color-scheme` once at boot and nothing listened
+  afterwards, so changing the system theme with the app open did nothing until a
+  reload. `app.tsx` now calls `initTheme({ storageKey: 'fancy.theme' })`, which
+  keeps the existing key and adds the listener.
+- **`fancy.theme` was read but never written.** Nothing in the scaffold could
+  set it, so the branch handling a saved choice was unreachable and there was no
+  way for a visitor to pick a theme at all. The new toggle writes it — and, for
+  `system`, clears it, since following the OS is the absence of a choice rather
+  than a third stored value.
+- **A junk stored value fell back to light instead of to the system**, which
+  could disagree with `initTheme()` and paint the page twice.
+
+**Nothing to do on upgrade** for an existing app — but if you scaffolded before
+this and want the control, copy `resources/js/components/ThemeToggle.tsx` and
+add the `initTheme` call in `resources/js/app.tsx`.
+
 ## 1.1.44 — 2026-08-11
 
 ### Changed
