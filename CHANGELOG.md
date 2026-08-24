@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.46 — 2026-08-23
+
+### Changed
+
+- **react-fancy 5.21.0 -> 5.26.0.** The lockfile had drifted five minors
+  behind, and the lockfile is what a fresh `laravel new --using=` actually
+  installs — so every new scaffold was getting 5.21.0 regardless of the
+  `^5.20.0` range in `package.json`.
+
+  Two fixes land with it, both found on real surfaces:
+
+  - **`<Card>` pads every direct child**, not only its `<div>` children. A card
+    mixing element types used to come out half-padded, with the non-`div`
+    children hard against the border.
+  - **`<Callout>` forwards its rest props**, so `data-*` handles, `id`,
+    `aria-*` and event handlers reach the DOM instead of being silently
+    dropped.
+
+  Verified on a running dev server rather than a build alone: vite client live,
+  React Refresh preamble injected, app mounted, browser console clean.
+
 ## 1.1.45 — 2026-08-18
 
 ### Added
