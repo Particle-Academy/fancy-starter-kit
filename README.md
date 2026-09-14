@@ -1,5 +1,7 @@
 # Fancy UI — Laravel starter kit
 
+[![Fancified](art/fancified.svg)](https://particle.academy)
+
 A Laravel + Inertia + React 19 + Tailwind v4 starter kit with **Fancy UI**
 preinstalled — use it in place of the official `react` / `vue` / `livewire`
 starter kits when you want to build on the [Fancy UI](https://ui.particle.academy)
