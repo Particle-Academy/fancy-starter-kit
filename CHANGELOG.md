@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.48 — 2026-09-14
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.26.0 → 5.27.0** in the lockfile that
+  `laravel new --using=` installs. `<PromptInput>` now attaches a pasted image
+  the way it already attached a dropped or picked one. `package.json` is
+  unchanged; this is within the existing `^5.26.0` range.
+
+  **What you must do:** nothing. If your app handles `paste` on an element
+  wrapping `PromptInput`, remove that handler, or an image paste attaches twice.
+
 ## 1.1.47 — 2026-09-13
 
 ### Removed
