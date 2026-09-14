@@ -59,6 +59,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `php artisan vendor:publish --provider="Inertia\ServiceProvider"` and set
   `pages.paths` to `resource_path('js/Pages')`. Otherwise nothing.
 
+### Changed
+
+- **`@particle-academy/fancy-echarts` 6.0.0 → 6.1.0** in the lockfile (the
+  `^6.0.0` range already allowed it). Adds `useGraphRoam(instance)`, which lets
+  a `graph` series pan and zoom from anywhere on the canvas rather than only
+  over the nodes. Additive; nothing to do.
+
+### Security
+
+- **`league/commonmark` 2.9.0 → 2.10.0** in the lockfile, clearing four high
+  advisories: an XSS through the `on*` attribute filter (bypassed with a U+000C
+  form feed) and three denials of service in the SmartPunct and Attributes
+  extensions and in crafted code fences, reference links and emphasis. It
+  arrives through `laravel/framework`, and the lockfile is what
+  `laravel new --using=` installs, so every scaffold since 1.1.46 received the
+  vulnerable version. This landed on `main` on 2026-09-03 and ships here.
+  **An existing app:** `composer update league/commonmark`.
+
 ## 1.1.46 — 2026-08-23
 
 ### Changed
