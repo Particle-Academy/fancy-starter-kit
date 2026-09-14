@@ -40,6 +40,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `composer require --dev fakerphp/faker` and keep using `fake()`; nothing in
   the kit depends on its absence.
 
+### Fixed
+
+- **Inertia looked for page components in `resources/js/pages`, and the kit's
+  pages are in `resources/js/Pages`.** That is the package default, and it only
+  shows up in tests: `assertInertia()->component('Welcome')` checks the file
+  exists, a case-insensitive disk (Windows, default macOS) matches `pages` to
+  `Pages`, and Linux does not. So a page test written on a laptop passed there
+  and failed on the first Linux CI run with "Inertia page component file
+  [Welcome] does not exist". The browser was never affected — `app.tsx` and
+  `ssr.tsx` glob `./Pages`. The kit now publishes `config/inertia.php`
+  (inertia-laravel 3.2.1's own file) with only the page path changed, and
+  `InertiaPagesTest` compares the configured directory name with the disk
+  exactly, so it fails on any OS if the two drift apart.
+
+  **What to do in an existing app:** if you assert Inertia components in tests
+  and run them on Linux, run
+  `php artisan vendor:publish --provider="Inertia\ServiceProvider"` and set
+  `pages.paths` to `resource_path('js/Pages')`. Otherwise nothing.
+
 ## 1.1.46 — 2026-08-23
 
 ### Changed
