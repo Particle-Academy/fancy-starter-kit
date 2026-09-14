@@ -9,6 +9,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.47 — 2026-09-13
+
+### Removed
+
+- **`fakerphp/faker`.** Its last release and last commit were both on
+  2026-02-04, which fails the Fancy UI rule that every third-party dependency
+  has been maintained within the last three months — a rule CI enforces from
+  2026-09-19. Laravel only defines the global `fake()` helper when Faker is
+  installed, so **a new scaffold has no `fake()`**. The unused `faker_locale`
+  setting and `APP_FAKER_LOCALE` went with it.
+
+### Added
+
+- **`Database\Factories\Support\FakeData`**, the kit's own fake-data generator,
+  and what `UserFactory` now uses:
+  `FakeData::shared()->name()` and `FakeData::shared()->unique()->safeEmail()`.
+  It covers exactly the formatters the kit uses, returns a repeatable sequence
+  when seeded (`->seed(1234)`), and its `unique()` throws once it runs out of
+  values, as Faker's does. It is application code: add a method when a factory
+  needs another kind of value. Documented in `README.md` and `AGENTS.md`.
+
+**What to do:**
+
+- **An app scaffolded from an earlier version: nothing.** Its own
+  `composer.json` still requires Faker, and `fake()` keeps working.
+- **A new app:** write `FakeData::shared()->…` where the Laravel docs write
+  `fake()->…`. An older app that wants to drop Faker too can copy
+  `database/factories/Support/` and `tests/Unit/FakeDataTest.php` across. Or run
+  `composer require --dev fakerphp/faker` and keep using `fake()`; nothing in
+  the kit depends on its absence.
+
 ## 1.1.46 — 2026-08-23
 
 ### Changed

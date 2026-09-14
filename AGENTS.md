@@ -50,6 +50,24 @@ vendor/bin/pint --dirty
 `npm run build` produces both client and SSR bundles. Keep SSR-safe code in
 shared modules and isolate browser-only APIs behind client boundaries.
 
+## Factories and fake data
+
+`fakerphp/faker` is not installed, so Laravel's `fake()` helper does not exist
+here (Laravel only defines it when Faker is present) — calling it fails with
+"Call to undefined function fake()". Use the application's own generator:
+
+```php
+use Database\Factories\Support\FakeData;
+
+FakeData::shared()->name();
+FakeData::shared()->unique()->safeEmail();
+FakeData::shared()->seed(1234); // repeatable sequence
+```
+
+It covers only the formatters this app uses. When a factory needs another kind
+of value, add a public method to `database/factories/Support/FakeData.php` with
+a test in `tests/Unit/FakeDataTest.php`, rather than installing Faker.
+
 ## Adding Fancy components
 
 Use the registry-backed CLI rather than copying components from package source:

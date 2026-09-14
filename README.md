@@ -62,6 +62,34 @@ Tune features in `config/fortify.php` and the create/reset logic in
 `config/fortify.php` (it needs the `two_factor_*` columns + the
 `TwoFactorAuthenticatable` trait on `App\Models\User`).
 
+## Factories and fake data
+
+The kit does **not** install `fakerphp/faker`, so Laravel's `fake()` helper is
+not defined — Laravel only registers it when Faker is present. Factories and
+seeders use the kit's own generator instead, in
+`database/factories/Support/FakeData.php`:
+
+```php
+use Database\Factories\Support\FakeData;
+
+'name' => FakeData::shared()->name(),                // instead of fake()->name()
+'email' => FakeData::shared()->unique()->safeEmail(), // instead of fake()->unique()->safeEmail()
+```
+
+- **It is your code, not a dependency.** It covers the formatters the kit's own
+  factories use; when you need another kind of value, add a method (and a test
+  in `tests/Unit/FakeDataTest.php`).
+- **`unique()`** never repeats a value for the same formatter, and throws once it
+  runs out. Like `fake()`, the shared generator belongs to the application
+  container, so each test starts with a clean slate.
+- **Seed it for repeatable data:** `FakeData::shared()->seed(1234)` yields the
+  same sequence every run, on every machine.
+
+Why: Faker has had no release or commit since February 2026, which fails the
+Fancy UI rule that every third-party dependency has been maintained within the
+last three months. If you would rather use it anyway, `composer require --dev
+fakerphp/faker` brings `fake()` back and nothing in the kit needs to change.
+
 ## SSR
 
 Inertia SSR is **wired but off by default** — a fresh install renders
