@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.52 — 2026-09-29
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.29.0 → 5.29.1**, range `^5.29.1`.
+  Documentation only: how to theme `color="brand"` per mode now ships in
+  react-fancy's README. If you set the brand variables for dark mode, swap
+  `--color-brand` and `--color-brand-contrast` TOGETHER — changing one alone
+  renders an unreadable button without erroring.
+
 ## 1.1.51 — 2026-09-29
 
 ### Changed
