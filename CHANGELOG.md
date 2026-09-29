@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.51 — 2026-09-29
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.28.1 → 5.29.0**, range `^5.29.0`.
+
+  5.29.0 adds `color="brand"` to every component that takes a colour, resolved
+  from three CSS variables (`--color-brand`, `--color-brand-contrast`,
+  `--color-brand-hover`) rather than a Tailwind hue — so an app built from this
+  kit can point the components at its own palette, including a hover that is a
+  different colour rather than a darker shade.
+
+  **What you must do: nothing.** Defaults keep the kit's violet. If you wrote
+  your own exhaustive `Record<Color, …>` against react-fancy's `Color` type, it
+  will now want a `brand` entry.
+
 ## 1.1.50 — 2026-09-28
 
 ### Changed
