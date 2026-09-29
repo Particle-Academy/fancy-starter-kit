@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.49 — 2026-09-28
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.27.0 → 5.28.0** in the lockfile that
+  `laravel new --using=` installs, and the range moves to `^5.28.0`. This also
+  picks up 5.27.1, which the kit had missed.
+
+  5.28.0 fixes `FileUpload`'s `accept` and `multiple` props, which were declared
+  on `FileUploadProps` and wired to nothing. `accept` is now enforced on the DROP
+  path as well as in the browse dialog — a browser only enforces it in the file
+  picker, and a drag-and-drop never opens one.
+
+  **What you must do: nothing**, unless you added a `FileUpload` with an `accept`
+  prop to your app. The kit itself does not use the component. If you did pass
+  `accept`, files that previously got through will now be refused — which is what
+  the prop was always supposed to do.
+
 ## 1.1.48 — 2026-09-14
 
 ### Changed
