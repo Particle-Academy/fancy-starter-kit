@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.50 — 2026-09-28
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.28.0 → 5.28.1** in the lockfile that
+  `laravel new --using=` installs, and the range moves to `^5.28.1`.
+
+  5.28.1 fixes `contentEditableAdapter.replaceRange` flattening the element it
+  edits, which capped `InputTag` at ONE tag in any contenteditable that renders
+  elements.
+
+  **What you must do: nothing**, unless your app uses `InputTag` over a
+  contenteditable. The kit itself does not.
+
 ## 1.1.49 — 2026-09-28
 
 ### Changed
