@@ -9,6 +9,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.54 — 2026-09-30
+
+### Changed
+
+- **`@particle-academy/react-fancy` 5.29.1 → 5.30.0**, range `^5.30.0`.
+  **Nothing to do on upgrade.** The release closes `Card`'s feature gap against
+  Flux UI and every addition is optional, with defaults chosen so a card written
+  before it renders byte-identically.
+
+  What is now available without adding a dependency:
+
+  - `Card.Header` / `Card.Footer` compose from `heading`, `description` and
+    `actions` — no flex wrapper from the caller, and they work standalone above
+    a card.
+  - `sections="divided" | "plain" | "banded"` and `dividerInset` for how the
+    sections are set apart.
+  - `size="xs" | "sm" | "md" | "lg"`, scaling padding and radius together.
+  - `variant` gained `muted` and `soft`; `highlight` adds an inside-top hairline.
+  - `Card.Bleed` runs content out to the card's edges.
+
+  The one visible change to existing markup: a `Card.Header` or `Card.Footer`
+  rendered OUTSIDE a `Card` no longer draws the rule of a card it is not inside.
+
+  Verified here: 22 tests / 655 assertions passed, `tsc --noEmit` clean, client
+  and SSR builds clean, and a dev-mode load with a clean browser console.
+
 ## 1.1.53 — 2026-09-30
 
 ### Security
