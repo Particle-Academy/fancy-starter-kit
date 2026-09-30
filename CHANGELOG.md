@@ -9,6 +9,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.53 — 2026-09-30
+
+### Security
+
+- **Four security fixes in the shipped `composer.lock`.** A fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` installs THIS
+  lockfile, so an advisory sitting in it is an advisory every new project starts
+  life with. Nothing else moved: no first-party package changed version, and
+  `package-lock.json` is untouched.
+
+  - `laravel/framework` v13.23.0 → **v13.34.0** — XSS in the debug page
+    information (low).
+  - `league/commonmark` 2.10.0 → **2.10.3** — quadratic-time denial of service
+    in the GitHub Flavored Markdown table extension's block-start scan
+    (**high**), and `DisallowedRawHtml` bypassed when a disallowed tag name ends
+    the raw-HTML literal (medium).
+  - `league/flysystem` 3.35.2 → **3.36.0** and `league/flysystem-local` 3.31.0 →
+    **3.35.3** — CVE-2026-102601: `WhitespacePathNormalizer`'s control-character
+    (`CorruptedPathDetected`) check is bypassed by malformed UTF-8 in a path,
+    affecting every adapter (low).
+
+  **Only the commonmark high one was reported by Dependabot? No — the reverse.**
+  Dependabot had opened an alert for the Laravel XSS ALONE. The other three came
+  from `composer audit`, which reads Packagist's advisory database directly. Two
+  tools, two answers, and the quieter one was the one with an alert attached to
+  it. Worth knowing before trusting an empty alert list as an all-clear.
+
+  **What you must do: nothing** beyond taking this release. No API changed and no
+  constraint in `composer.json` moved — every one of these was already admitted
+  by the existing ranges, so the fix is purely which versions the lockfile
+  resolves.
+
+### Verified
+
+- `php artisan test --compact`: 22 passed, 655 assertions. `npm run build`
+  clean, including the SSR bundle.
+- `composer audit`: **no advisories of any severity** remain.
+- Deliberately NOT bumped: `guzzlehttp/guzzle`. Resolving the framework with
+  `--with-all-dependencies` dragged guzzle 7.15.2 → **8.2.0** and promises/psr7
+  across majors too — 46 packages in total. That is not what a security patch
+  owes a scaffolding lockfile, so the update was narrowed to the four packages
+  with advisories against them.
+
 ## 1.1.52 — 2026-09-29
 
 ### Changed
