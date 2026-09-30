@@ -1,0 +1,105 @@
+name: Publish
+
+# THIS WORKFLOW PUBLISHES NOTHING TO A REGISTRY, AND MUST NOT START.
+#
+# The starter kit is distributed by Packagist, which syncs from a pushed tag by
+# webhook on its own. Adding a `composer`/`npm publish` step here would be a
+# second publisher racing the first, and the kit is not an npm package at all —
+# its `package.json` is the scaffold a consumer gets from `laravel new`, not
+# something we ship to a registry.
+#
+# What this workflow DOES own is the pair of things Packagist's sync leaves
+# undone, and that every other repo in the estate already had:
+#
+#   1. The changelog gate. Every other repo fails a tag whose version has no
+#      CHANGELOG.md entry. This one had no tag-triggered workflow at all, so it
+#      had no gate either — 56 tags, and nothing ever checked that the release
+#      was documented before it became resolvable.
+#
+#   2. The GitHub release. 56 tags and an EMPTY Releases page, measured
+#      2026-09-30. `laravel new --using=particle-academy/fancy-starter-kit`
+#      pulls the kit's lockfile, so a consumer deciding whether to re-scaffold
+#      is deciding on the strength of what GitHub shows them — and GitHub showed
+#      a project with no releases since it began.
+#
+# On Packagist, unlike npm, the changelog is served FROM THE REPO. An entry
+# added after the tag is read by everyone who looks, so DETECTION is a complete
+# fix here even though this cannot block. What it replaces is silence.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # creates the GitHub release below
+
+jobs:
+  release:
+    name: Changelog entry, then the GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assert the tagged version is documented
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+
+          if [ ! -f CHANGELOG.md ]; then
+            echo "::error::No CHANGELOG.md. Every package keeps one."
+            exit 1
+          fi
+
+          # Accept both house styles: `## 1.2.3 — date` and Keep a Changelog's
+          # `## [1.2.3] - date`. Matching only one is how a changelog miss goes
+          # unreported -- a tool that assumes a format it does not check is a
+          # tool that fails quietly on the other one.
+          if ! grep -qE "^## +\[?v?${VERSION}\]?" CHANGELOG.md; then
+            echo "::error::CHANGELOG.md has no entry for ${VERSION}."
+            echo "::error::Add one -- say what a consumer must DO, not just what changed."
+            echo "::error::Packagist has already synced this tag; the entry is still read from the repo, so fix it on main now."
+            exit 1
+          fi
+
+          # STRUCTURE, not just presence. The check above only asks whether a
+          # heading for this version exists SOMEWHERE. A changelog that is
+          # complete but mis-ordered tells a truthful-looking lie: a consumer
+          # deciding whether to upgrade reads top-down, and it is invisible to
+          # whoever wrote it because they were looking at their own entry
+          # rather than at the file.
+          #
+          # At release time the tagged version IS the newest, so it must be the
+          # first version heading in the file. [Unreleased] may precede it.
+          FIRST=$(grep -E '^## ' CHANGELOG.md \
+                  | grep -viE '^## +\[?unreleased\]?' \
+                  | head -1)
+
+          if ! printf '%s' "$FIRST" | grep -qE "^## +\[?v?${VERSION}\]?"; then
+            echo "::error::CHANGELOG.md has an entry for ${VERSION}, but it is NOT the first version heading."
+            echo "::error::Top of file is: ${FIRST}"
+            echo "::error::Move this release above the older entries."
+            exit 1
+          fi
+
+          echo "Found a changelog entry for ${VERSION}, and it is the newest."
+
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            echo "Release $GITHUB_REF_NAME already exists; leaving it alone."
+            exit 0
+          fi
+
+          # The section for this version, up to the next `## ` heading.
+          awk -v v="$VERSION" '
+            /^## / { if (found) exit; if (index($0, v)) { found = 1 }; next }
+            found { print }
+          ' CHANGELOG.md > notes.md
+
+          gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md
+          echo "Published release $GITHUB_REF_NAME."
