@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.55 — 2026-10-04
+
+### Changed
+
+- `@particle-academy/react-fancy` locked to **5.33.0**, which fixes two
+  `FileUpload` defects: a `multiple={false}` field could never replace its file,
+  and choosing the same file twice did nothing because the hidden input was
+  never reset. The declared range (`^5.30.0`) already admitted it — the lockfile
+  is the part that matters here, since `laravel new` installs from it, so a new
+  scaffold would otherwise have shipped 5.30.0 indefinitely.
+
 ## 1.1.54 — 2026-09-30
 
 ### Changed
