@@ -40,7 +40,7 @@ jobs:
     name: Changelog entry, then the GitHub release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Assert the tagged version is documented
         run: |
