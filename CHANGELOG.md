@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.56 — 2026-10-06
+
+### Security
+
+- **`shell-quote` is no longer installed at a version with a command-injection
+  advisory, and `source-map-js` no longer at one with a denial-of-service
+  advisory.** Both arrive transitively through the build toolchain, and both are
+  now pinned forward by an `overrides` block: `shell-quote` `^1.12.0` (the
+  advisory covers 1.8.4 through 1.10.0; this kit shipped 1.9.0) and
+  `source-map-js` `^1.2.2` (the advisory covers up to 1.2.1; this kit shipped
+  1.2.1).
+
+  **This one reached you, which is why it is a release rather than a chore.** A
+  library's advisories in its own toolchain stay on the maintainer's machine —
+  npm packages do not ship a lockfile. A starter kit does: `laravel new
+  --using=particle-academy/fancy-starter-kit` resolves `package-lock.json` from
+  this repo, so every scaffold created before today installed the flagged
+  versions.
+
+  `npm audit` now reports zero vulnerabilities. Nothing you wrote has to change —
+  `npm install` on an existing scaffold picks up the pins.
+
 ## 1.1.55 — 2026-10-04
 
 ### Changed
