@@ -9,6 +9,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.57 — 2026-10-09
+
+### Changed
+
+- **`react-fancy` moves to 5.34.0 in the lockfile**, which adds two
+  components: `VirtualList` (a windowed list for tens of thousands of rows,
+  with measured variable row heights, deep links by row id and sticky-bottom
+  tail-following) and `ActivityLight` (activity on an edge between two
+  parties, with a recency ramp).
+
+  **Nothing for you to do, and nothing changed in this scaffold’s own code.**
+  Both are new components; no existing export moved and no API changed. The
+  declared range (`^5.30.0`) is untouched — only the resolved version in
+  `package-lock.json` moved.
+
+  It is a release rather than a chore because **a fresh `laravel new` pulls
+  this lockfile**, so the version recorded here is the version every new
+  project gets. A kit left behind ships a stale kit to everyone who starts
+  from it.
+
+  Verified before tagging: 22 tests pass (655 assertions), the client and SSR
+  bundles build, and a dev-mode smoke — Vite re-optimising against the
+  changed lockfile, the welcome page served and rendered, console clean apart
+  from Vite’s own connect lines and React’s DevTools notice.
+
 ## 1.1.56 — 2026-10-06
 
 ### Security
