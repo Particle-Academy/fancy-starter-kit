@@ -9,6 +9,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.58 — 2026-10-10
+
+### Changed
+
+- **`react-fancy` moves to 5.35.0 in the lockfile**, which fixes two defects in
+  `PromptInput`: its keyboard hint named a key non-Apple keyboards do not have
+  (a hardcoded Command glyph, in the hint and the default placeholder), and its
+  attach control drew as a tofu box wherever no colour emoji font is installed,
+  because the icon was a literal emoji.
+
+  **Nothing for you to do, and nothing changed in this scaffold’s own code.**
+  This kit does not mount `PromptInput`, so no surface here changes shape — but
+  a new project inheriting a stale lockfile would inherit the bug the moment it
+  added a composer, which is the whole reason this is a release and not a chore:
+  **a fresh `laravel new` pulls this lockfile.**
+
+  If you DO add a composer, leave `placeholder` and `platform` unset. The
+  component then names the modifier the visitor actually has, and reads the
+  platform after mount so server-rendered HTML has nothing to disagree with.
+  Pass `platform` only when your host knows better than `navigator` does — an
+  Electron renderer, or a remote session where the keyboard is not the one
+  running the browser.
+
+  The declared range (`^5.30.0`) is untouched — only the resolved version in
+  `package-lock.json` moved.
+
+  Verified before tagging: 22 tests pass (655 assertions), the client and SSR
+  bundles build, and a dev-mode smoke — Vite connected, the welcome page served
+  and rendered, console clean apart from Vite’s own connect lines and React’s
+  DevTools notice.
+
 ## 1.1.57 — 2026-10-09
 
 ### Changed
