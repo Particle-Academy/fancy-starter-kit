@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.59 — 2026-10-10
+
+### Changed
+
+- **`react-fancy` moves to 5.35.1 in the lockfile**, a one-character fix to
+  `ActivityLight`: the `direction="both"` mark was U+21C4 (`⇄`), which the
+  Liberation fonts do not cover, so a container carrying only those drew arrows
+  for `in` and `out` and a tofu box for `both`. It is now U+2194 (`↔`), which
+  they do cover.
+
+  **Nothing for you to do.** No prop, data attribute or accessible name changed,
+  and the mark is decorative. As with 1.1.58, this is a release rather than a
+  chore only because **a fresh `laravel new` pulls this lockfile** — the version
+  recorded here is the version every new project starts from. The declared range
+  (`^5.30.0`) is untouched.
+
+  Verified before tagging: 22 tests pass (655 assertions) and both bundles build.
+  No browser smoke this time: the scaffold does not mount `ActivityLight`, so
+  there is no surface here in which the change could show up, and saying that is
+  more honest than running a smoke test that could not have failed.
+
 ## 1.1.58 — 2026-10-10
 
 ### Changed
