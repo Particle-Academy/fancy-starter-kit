@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.60 — 2026-10-11
+
+### Changed
+
+- **react-fancy 5.36.1 in the lockfile.** Starter-kit lockstep, same session as
+  the ship. 5.36.0 added `<QrCode>` — a dependency-free QR code as an SVG — and
+  5.36.1 made its encoder refuse an over-long value in constant time rather
+  than linear.
+
+  **Nothing to do, and this scaffold does not mount `QrCode`**, so nothing here
+  changes shape. The reason it is still a release is that a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this*
+  lockfile, so without it every new project would start on a react-fancy two
+  versions behind.
+
+  The declared range stays `^5.30.0`. The lockfile is what pins the version a
+  new project gets; narrowing the range would only raise the floor for anyone
+  who later runs `npm update`, and nothing here needs 5.36.
+
 ## 1.1.59 — 2026-10-10
 
 ### Changed
