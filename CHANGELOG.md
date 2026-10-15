@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.63 — 2026-10-15
+
+### Changed
+
+- **react-fancy 5.39.0 in the lockfile.** `PromptInput` gains the inline paste
+  pills `Composer` got in 5.38.0 (`pasteThreshold`, `pasteImages`), plus a quieter
+  footer: icon attach and send buttons, a `near-limit` meter, and `usedTokens` for
+  a real usage value.
+
+  **Nothing to do.** All of it is opt-in and this scaffold does not mount
+  `PromptInput`; it is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.62 — 2026-10-14
 
 ### Changed
