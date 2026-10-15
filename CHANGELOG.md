@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.62 — 2026-10-14
+
+### Changed
+
+- **react-fancy 5.38.0 in the lockfile.** `Composer` can now put paste pills
+  inline, where the paste happened (`pastePlacement="inline"`), hold pasted
+  images as pills (`pasteImages`), and restyle the pills and their hover popover
+  (`classNames`, `renderPastePreview`, `previewChars`). `Tooltip`'s arrow now
+  follows a restyled bubble.
+
+  **Nothing to do.** Every new `Composer` behaviour is opt-in and this scaffold
+  does not mount `Composer`; it is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this*
+  lockfile.
+
 ## 1.1.61 — 2026-10-11
 
 ### Changed
