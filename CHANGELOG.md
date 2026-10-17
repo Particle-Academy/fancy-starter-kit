@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.67 — 2026-10-17
+
+### Changed
+
+- **react-fancy 5.43.0 in the lockfile.** A click in a large `TreeNav` now
+  re-renders only the rows it changes (measured 175–267 ms → 17–20 ms per click on
+  a 5,000-node tree), and `virtualize` renders only the rows in view.
+
+  **Nothing to do.** This scaffold does not mount `TreeNav`; it is a release
+  because a fresh `laravel new --using=particle-academy/fancy-starter-kit` pulls
+  *this* lockfile.
+
 ## 1.1.66 — 2026-10-17
 
 ### Changed
