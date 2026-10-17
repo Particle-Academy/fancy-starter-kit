@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.65 — 2026-10-17
+
+### Changed
+
+- **react-fancy 5.42.0 in the lockfile.** Enter in `Command`'s input now picks the
+  active (or first visible) item, and focus stays in the input while the arrows
+  move the active item.
+
+  **Nothing to do.** This scaffold does not mount `Command`; it is a release
+  because a fresh `laravel new --using=particle-academy/fancy-starter-kit` pulls
+  *this* lockfile.
+
 ## 1.1.64 — 2026-10-17
 
 ### Changed
