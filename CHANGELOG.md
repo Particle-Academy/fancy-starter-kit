@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.64 — 2026-10-17
+
+### Changed
+
+- **react-fancy 5.41.1 in the lockfile.** Adds `Toast.Stack` (a controlled stack
+  of actionable toasts that never drops an item) and `Command`'s
+  `shouldFilter={false}` with a controllable `query`; exports `Toast.Item`, which
+  the docs already described.
+
+  **Nothing to do.** All of it is opt-in and this scaffold mounts none of it; it
+  is a release because a fresh `laravel new --using=particle-academy/fancy-starter-kit`
+  pulls *this* lockfile.
+
 ## 1.1.63 — 2026-10-15
 
 ### Changed
