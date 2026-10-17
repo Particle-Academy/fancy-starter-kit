@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.66 — 2026-10-17
+
+### Changed
+
+- **react-fancy 5.42.1 in the lockfile.** A filled `Button`'s icon and badge now
+  take the label's colour instead of hard-coded white (invisible on light fills,
+  including a dark-mode brand pair), and a `badge` or `avatar` no longer renders
+  twice.
+
+  **Nothing to do.** This scaffold's buttons carry no icon or badge on a light
+  fill; it is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.65 — 2026-10-17
 
 ### Changed
