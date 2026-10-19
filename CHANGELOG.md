@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.70 — 2026-10-19
+
+### Changed
+
+- **react-fancy 5.48.0 in the lockfile.** Tab now accepts the highlighted
+  suggestion in `PromptInput`'s `/` and `@` menus, as Enter does.
+
+  **Nothing to do.** This scaffold does not mount `PromptInput`; it is a release
+  because a fresh `laravel new --using=particle-academy/fancy-starter-kit` pulls
+  *this* lockfile.
+
 ## 1.1.69 — 2026-10-19
 
 ### Changed
