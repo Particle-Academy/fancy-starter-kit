@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.69 — 2026-10-19
+
+### Changed
+
+- **react-fancy 5.47.0 in the lockfile.** `FauxClient` gains a zoom bar and a
+  full-screen button (`controls`), hidden until the frame is hovered.
+
+  **Nothing to do.** It is opt-in and this scaffold does not mount `FauxClient`;
+  it is a release because a fresh `laravel new --using=particle-academy/fancy-starter-kit`
+  pulls *this* lockfile.
+
 ## 1.1.68 — 2026-10-19
 
 ### Changed
