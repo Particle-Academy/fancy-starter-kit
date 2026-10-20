@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.71 — 2026-10-19
+
+### Security
+
+- **react-fancy 5.49.0 in the lockfile, which includes 5.48.1's sanitiser fix:**
+  untrusted HTML rendered through `ContentRenderer` could carry a `<title>` that
+  renamed the browser tab. It is now stripped. Also new and opt-in: a framed
+  `ImageViewer` / `PdfViewer` (`frame`).
+
+  **Nothing to do** beyond taking the release; a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.70 — 2026-10-19
 
 ### Changed
