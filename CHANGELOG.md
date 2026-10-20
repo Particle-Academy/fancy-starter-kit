@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.72 — 2026-10-20
+
+### Changed
+
+- **react-fancy 5.50.0 in the lockfile.** `sanitizeHtml` gains an allowlist mode
+  and `renderMarkdown` is exported; `FauxClient` with `fill` and `width` scrolls
+  long content (5.49.1).
+
+  **Nothing to do.** Both are opt-in; it is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.71 — 2026-10-19
 
 ### Security
