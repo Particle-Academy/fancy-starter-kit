@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.73 — 2026-10-20
+
+### Changed
+
+- **fancy-app-update 0.3.0 in the lockfile** (through fancy-inertia and
+  fancy-pwa). It adds `AppUpdateStack` at `fancy-app-update/stack`: a refresh
+  notice that can show the release's feature cards, stacked like react-fancy's
+  `Toast.Stack`, with a plain notice for a release with no message.
+
+  **Nothing to do.** The kit's existing update prompt is unchanged; the stack is
+  opt-in. It is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.72 — 2026-10-20
 
 ### Changed
