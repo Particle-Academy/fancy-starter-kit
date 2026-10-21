@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.74 — 2026-10-20
+
+### Changed
+
+- **react-fancy 5.51.0 in the lockfile.** Closed overlays (Drawer, Modal,
+  Command, ContextMenu, Dropdown, the mobile menu) now unmount even when no exit
+  animation runs. Paste-pill previews are a Popover, on hover and focus.
+  `Chart.Sparkline` takes `min`, and `MagicWand` can attach to an external
+  `target`.
+
+  **Nothing to do** unless you styled the paste-pill preview through
+  `[data-react-fancy-tooltip]`: it is now `[data-react-fancy-popover]`.
+  `classNames.preview` still applies. It is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.73 — 2026-10-20
 
 ### Changed
