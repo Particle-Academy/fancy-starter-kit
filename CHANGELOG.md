@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.77 — 2026-10-21
+
+### Changed
+
+- **react-fancy 5.51.2 and fancy-app-update 0.6.0 in the lockfile.**
+  - `Toast.Stack` puts its front card first in the page order, with no visual
+    change.
+  - `AppUpdateStack` adds small lowercase prev / next links, a "scroll" hint
+    that fades in and out, and `open` / `onOpenChange` to show the latest cards
+    on demand (with "got it" instead of refresh).
+
+  **Nothing to do.** It is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.76 — 2026-10-21
 
 ### Changed
