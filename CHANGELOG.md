@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.78 — 2026-10-21
+
+### Security
+
+- **vite 8.3.5 in the lockfile** (was 8.2.0). Vite bundles `launch-editor`, and
+  the versions it shipped before had three Windows advisories, one high: an
+  existence check that could be bypassed, missing `%` escaping, and editor CLI
+  flags misread as commands. This kit's lockfile marks vite as a runtime
+  package (fancy-pwa has a `vite` peer dependency), so every new
+  `laravel new --using=particle-academy/fancy-starter-kit` project installed
+  the vulnerable version for its dev server.
+
+  **What to do:** in an existing project made from this kit, run `npm update
+  vite`. New projects get the fix automatically.
+
+### Changed
+
+- **react-fancy 5.54.1 in the lockfile.**
+  - Narrow buttons wrap their label (`labelClassName="truncate"` for one line).
+  - Switch honours `labelHidden` and forwards `aria-*`.
+  - Tooltip keeps its child's ref.
+
 ## 1.1.77 — 2026-10-21
 
 ### Changed
