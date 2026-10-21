@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.76 — 2026-10-21
+
+### Changed
+
+- **react-fancy 5.51.1 and fancy-app-update 0.4.0 in the lockfile.** A stacked
+  toast's "+N" count badge is opaque in dark mode, so it stays readable over
+  whatever is behind it. `AppUpdateStack` feature cards take an optional
+  `imageDark`.
+
+  **Nothing to do.** It is a release because a fresh
+  `laravel new --using=particle-academy/fancy-starter-kit` pulls *this* lockfile.
+
 ## 1.1.75 — 2026-10-20
 
 ### Changed
