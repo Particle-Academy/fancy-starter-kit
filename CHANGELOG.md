@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.75 — 2026-10-20
+
+### Changed
+
+- **fancy-inertia 0.12.0** (the range moves from `^0.11.0` to `^0.12.0`, because
+  a caret on a 0.x never reaches the next minor). It adds `AppUpdateStack` at
+  `@particle-academy/fancy-inertia/stack`: the stacked "new version" notice with
+  feature cards and Inertia's version check built in. `setupFancyApp({
+  appUpdate })` now also accepts an element, so you can mount the stack there.
+
+  **Nothing to do.** `appUpdate: true` and the alert-props object behave as
+  before. The stack needs react-fancy `>=5.41.0`; this kit's lockfile has
+  5.51.0.
+
 ## 1.1.74 — 2026-10-20
 
 ### Changed
