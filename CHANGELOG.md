@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.79 — 2026-10-22
+
+### Changed
+
+- **react-fancy 5.58.0 in the lockfile** (was 5.54.1). All additive; nothing
+  in the kit's pages changes.
+  - 5.54.2: the default Button's fill follows the theme tokens.
+  - 5.55.0: `TimeGrid` typed cells and rectangle / linear range selection.
+  - 5.56.0: `Calendar` per-day hooks (`renderDay`, `dayClassName`,
+    `dayAriaLabel`), stable date ids and a controlled visible month.
+  - 5.57.0: `TimeGrid` column windowing (`windowColumns`).
+  - 5.58.0: `MultiSwitch` per-option `color`.
+
+  **What to do:** in an existing project, `npm update
+  @particle-academy/react-fancy` if you want these. Only the react-fancy entry
+  in the lockfile moved.
+
 ## 1.1.78 — 2026-10-21
 
 ### Security
