@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.80 — 2026-10-23
+
+### Changed
+
+- **react-fancy 5.59.0 in the lockfile** (was 5.58.0). Additive: `PdfViewer`
+  shows a readable "couldn't be shown" panel with Retry for a page image that
+  fails to load, instead of a broken-image icon. Nothing in the kit's pages
+  changes. Only the react-fancy entry in the lockfile moved.
+
 ## 1.1.79 — 2026-10-22
 
 ### Changed
