@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.81 — 2026-10-23
+
+### Changed
+
+- **react-fancy 5.60.0 in the lockfile** (was 5.59.0). Additive: a new
+  `ResizablePanels` splitter, and `FileUpload`'s dropzone is now reachable and
+  operable from the keyboard with a full-opacity focus ring. Nothing in the
+  kit's pages changes. Only the react-fancy entry in the lockfile moved.
+
 ## 1.1.80 — 2026-10-23
 
 ### Changed
