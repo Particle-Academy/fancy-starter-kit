@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.82 — 2026-10-23
+
+### Changed
+
+- **fancy-query 0.9.0** (was 0.8.0). The range in `package.json` moves to
+  `^0.9.0`, because a caret on a 0.x version does not admit the next minor.
+  Additive: a new opt-in `@particle-academy/fancy-query/socket` entry (a
+  dependency-free realtime client) that nothing in the kit imports. Leaving a
+  private or presence channel no longer drops a public subscription with the
+  same bare name. Nothing to do.
+
 ## 1.1.81 — 2026-10-23
 
 ### Changed
