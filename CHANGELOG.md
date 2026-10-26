@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.87 — 2026-10-26
+
+### Changed
+
+- **react-fancy 5.64.0 in the lockfile** (was 5.63.0). It adds
+  `ReorderableGrid`, which reorders grid cells in place by pointer or
+  keyboard. The kit's pages don't use it, so there is nothing to do. Only the
+  react-fancy entry in the lockfile moved. In the dev-mode smoke test, `/`,
+  `/register` and `/login` render with a clean console.
+
 ## 1.1.86 — 2026-10-26
 
 ### Changed
