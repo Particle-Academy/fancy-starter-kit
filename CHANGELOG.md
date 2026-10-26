@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.85 — 2026-10-26
+
+### Changed
+
+- **react-fancy 5.62.0 in the lockfile** (was 5.61.1). Escape now goes to the
+  innermost open layer (menu, select, popover, tooltip, modal, full screen), so
+  one Escape no longer closes a Dropdown and the Modal it was opened from
+  together. The kit's pages use no layered Escape; nothing to do. Only the
+  react-fancy entry in the lockfile moved. Dev-mode smoke: `/`, `/register`
+  and `/login` render with a clean console.
+
 ## 1.1.84 — 2026-10-26
 
 ### Changed
