@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.84 — 2026-10-26
+
+### Changed
+
+- **react-fancy 5.61.1 in the lockfile** (was 5.60.1). This adds the
+  `FullScreen` primitive and an opt-in full-screen toggle on the `Editor`
+  (5.61.0), and puts full screen in the browser top layer so a transformed
+  ancestor cannot trap it (5.61.1). It also makes the Editor's markdown output
+  source-preserving (5.60.2). The kit's pages use none of these; nothing to do.
+  Only the react-fancy entry in the lockfile moved. Dev-mode smoke: `/`,
+  `/register` and `/login` render with a clean console.
+
 ## 1.1.83 — 2026-10-26
 
 ### Changed
