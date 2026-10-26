@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.83 — 2026-10-26
+
+### Changed
+
+- **react-fancy 5.60.1 in the lockfile** (was 5.60.0). Fix: the `Editor` in
+  markdown mode no longer rewrites markdown nobody touched (tight lists stayed
+  tight only by accident; ordered and nested lists and code fences now
+  round-trip). The kit's pages don't use the markdown Editor; nothing to do.
+  Only the react-fancy entry in the lockfile moved.
+
 ## 1.1.82 — 2026-10-23
 
 ### Changed
