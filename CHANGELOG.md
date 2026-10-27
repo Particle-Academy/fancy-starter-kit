@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   react-fancy). It declares `engines.node >=22`, which the kit already
   requires. Nothing to do.
 
+Dev-mode smoke on a fresh scaffold of this commit: `/`, `/register` and
+`/login` render with a clean console.
+
 ## 1.1.88 — 2026-10-27
 
 ### Changed
