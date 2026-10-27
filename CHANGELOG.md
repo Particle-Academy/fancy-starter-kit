@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.89 — 2026-10-27
+
+### Changed
+
+- **react-fancy 5.65.0 in the lockfile** (was 5.64.1). `PromptInput` gains
+  controlled state (`value` / `onChange`) and draft save/restore (`draft`,
+  a `ref` handle with `getDraft()` / `setDraft()`). Existing usage renders the
+  same markup; the kit's pages don't use `PromptInput`, so there is nothing to
+  do. The `package.json` range is unchanged (`^5.30.0`).
+
 ## 1.1.88 — 2026-10-27
 
 ### Changed
