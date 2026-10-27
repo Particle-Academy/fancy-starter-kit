@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.88 — 2026-10-27
+
+### Changed
+
+- **react-fancy 5.64.1 in the lockfile** (was 5.64.0). Fix: `Dropdown` menu
+  items can now be reached from the keyboard (arrows, Home/End, typeahead;
+  focus returns to the trigger on Escape, Tab and activation). Nothing to do.
+  Only the react-fancy entry in the lockfile moved. Dev-mode smoke: `/`,
+  `/register` and `/login` render with a clean console.
+
 ## 1.1.87 — 2026-10-26
 
 ### Changed
