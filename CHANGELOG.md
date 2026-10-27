@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   a `ref` handle with `getDraft()` / `setDraft()`). Existing usage renders the
   same markup; the kit's pages don't use `PromptInput`, so there is nothing to
   do. The `package.json` range is unchanged (`^5.30.0`).
+- **fancy-inertia 0.14.0** (was 0.12.0; range `^0.12.0` → `^0.14.0`, because
+  a caret on a 0.x excludes the next minor). 0.13.0 and 0.14.0 only add the
+  `@particle-academy/fancy-inertia/whats-new` entry (`createHttpStorage`,
+  `WhatsNew`) and declare `fancy-whats-new` as an optional peer. The kit
+  imports only `/server` and the root, so there is nothing to do.
 
 ## 1.1.88 — 2026-10-27
 
