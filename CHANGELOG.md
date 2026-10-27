@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `@particle-academy/fancy-inertia/whats-new` entry (`createHttpStorage`,
   `WhatsNew`) and declare `fancy-whats-new` as an optional peer. The kit
   imports only `/server` and the root, so there is nothing to do.
+- **fancy-app-update 0.7.0 in the lockfile** (was 0.6.0; transitive, through
+  fancy-inertia). It adds a `./cards` entry and deprecates `AppUpdateStack`
+  without changing it. Nothing to do.
 
 ## 1.1.88 — 2026-10-27
 
