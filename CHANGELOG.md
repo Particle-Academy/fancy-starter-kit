@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.90 — 2026-10-27
+
+### Changed
+
+- **react-fancy 5.71.0 in the lockfile** (was 5.65.0, six releases behind).
+  5.66.0 to 5.71.0 add `PromptInput` pill labels, `ContentRenderer` copy
+  buttons and progressive streaming, `Editor` copy-button pass-through,
+  acknowledged send for `Composer` / `PromptInput`, IME-safe Enter across the
+  input components, and the new `ChatThread` / `ChatMessage`. One default
+  changed: `ContentRenderer` (and `Editor` in view mode) now shows copy buttons
+  and wraps each `pre` / `table`. The kit's pages use none of these
+  components, so there is nothing to do. The `package.json` range is unchanged
+  (`^5.30.0`).
+- **First-party 0.x ranges widened to `>=X <2.0`**: fancy-inertia
+  `>=0.14.0 <2.0`, fancy-pwa `>=0.2.0 <2.0`, fancy-query `>=0.9.0 <2.0`,
+  fancy-screens `>=0.7.1 <2.0` (each was a caret). A caret on a 0.x locks the
+  minor, so every later minor of those packages read as a conflict rather than
+  an upgrade in a scaffolded app. Widening only adds candidates: the versions
+  in the lockfile are unchanged and still resolve. Nothing to do.
+
 ## 1.1.89 — 2026-10-27
 
 ### Changed
