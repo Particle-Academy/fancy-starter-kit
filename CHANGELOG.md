@@ -29,6 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   an upgrade in a scaffolded app. Widening only adds candidates: the versions
   in the lockfile are unchanged and still resolve. Nothing to do.
 
+Dev-mode smoke on a fresh scaffold of this commit: `/`, `/register` and
+`/login` render with a clean console (0 errors, 0 warnings).
+
 ## 1.1.89 — 2026-10-27
 
 ### Changed
