@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.91 — 2026-10-29
+
+### Security
+
+- **symfony/http-foundation 8.1.10 in the lockfile** (was 8.1.2). Fixes
+  CVE-2026-108082 (high): a ReDoS in `HeaderUtils::split()` reachable through
+  the `Cache-Control` request header, so any request could carry it.
+- **symfony/mime 8.1.10 in the lockfile** (was 8.1.2). Fixes CVE-2026-45070
+  (medium): email header injection through non-token characters in MIME
+  parameter names.
+- Only those two packages moved; `composer audit --locked` now reports no
+  advisories. No constraint in `composer.json` changed.
+- **Existing apps made from the kit must update themselves.** The kit's
+  lockfile only reaches apps created after this release. In an app you already
+  have, run `composer update symfony/http-foundation symfony/mime`.
+
+Dev-mode smoke on a fresh scaffold of this commit: `/`, `/register` and
+`/login` render with a clean console (0 errors, 0 warnings).
+
 ## 1.1.90 — 2026-10-27
 
 ### Changed
