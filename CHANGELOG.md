@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.93 — 2026-10-30
+
+### Changed
+
+- **react-fancy 5.71.2 in the lockfile** (was 5.71.1). `VirtualList` no
+  longer reads `scrollTop` in each commit while following the tail. A
+  performance fix with no API change; nothing in the kit needs to change.
+- Only that lockfile entry moved. The `package.json` range is unchanged
+  (`^5.30.0`). `composer audit --locked` and `npm audit --omit=dev` both
+  report no advisories.
+- **Consumer action: none.** Existing apps made from the kit pick this up with
+  `npm update @particle-academy/react-fancy`.
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit: `/`,
+`/register` and `/login` render with a clean console (0 errors, 0 warnings).
+
 ## 1.1.92 — 2026-10-30
 
 ### Changed
