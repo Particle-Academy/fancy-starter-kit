@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.96 — 2026-10-31
+
+### Changed
+
+- **fancy-query 0.9.1 in the lockfile** (was 0.9.0). `useFancyStream` and
+  `useFancyEchoInvalidation` now refetch / invalidate on every subscription
+  acknowledgement, the initial one and each one after a reconnect, so events
+  published while the socket was down are no longer lost. No API change;
+  nothing in the kit needs to change.
+- Only that lockfile entry moved (it also gains the `license` field 0.9.1's
+  manifest now declares). The `package.json` range is unchanged
+  (`>=0.9.0 <2.0`). `composer audit --locked` and `npm audit --omit=dev` both
+  report no advisories.
+- **Consumer action: none.** Existing apps made from the kit pick this up with
+  `npm update @particle-academy/fancy-query`.
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit: `/`,
+`/register` and `/login` render with a clean console (0 errors, 0 warnings).
+
 ## 1.1.95 — 2026-10-31
 
 ### Changed
