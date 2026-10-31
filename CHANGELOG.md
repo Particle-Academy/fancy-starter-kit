@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.95 — 2026-10-31
+
+### Changed
+
+- **BREAKING for new apps: the kit now requires PHP 8.4 or newer** (was
+  `^8.3`). This is the kit 0.5 platform floor, which the rest of the suite
+  already declares; the starter kit was the one place still allowing 8.3.
+  Creating a kit app on PHP 8.3 now stops with a Composer platform error
+  ("your php version does not satisfy that requirement").
+  **What to do:** upgrade PHP to 8.4+, or pin the last 8.3-compatible
+  release:
+  `laravel new my-app --using=particle-academy/fancy-starter-kit:1.1.94`.
+- Only the constraint moved. `composer.lock` changes in its content hash and
+  its `platform` entry and nothing else: no package version moved, and Pest
+  stays on 4.
+- The bundled `AGENTS.md` now says PHP 8.4+.
+- **Consumer action for existing apps: none.** The PHP requirement lives in
+  your app's own `composer.json`, which this release does not touch.
+
 ## 1.1.94 — 2026-10-31
 
 ### Changed

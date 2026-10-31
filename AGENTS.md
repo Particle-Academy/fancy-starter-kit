@@ -2,7 +2,7 @@
 
 This application is built from the Fancy UI Laravel starter kit:
 
-- Laravel 13 and PHP 8.3+
+- Laravel 13 and PHP 8.4+
 - Inertia 3 with React 19 and TypeScript
 - Tailwind CSS 4 and Vite
 - Fancy UI (`react-fancy`, `fancy-inertia`, and `fancy-query`)
