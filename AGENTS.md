@@ -47,6 +47,11 @@ npm run build
 vendor/bin/pint --dirty
 ```
 
+Tests are written with Pest. `tests/Pest.php` binds every test in
+`tests/Feature` to `Tests\TestCase` with `RefreshDatabase`; write new tests as
+`test()` / `it()` closures. `composer test` and `php artisan test` both run
+Pest.
+
 `npm run build` produces both client and SSR bundles. Keep SSR-safe code in
 shared modules and isolate browser-only APIs behind client boundaries.
 

@@ -9,6 +9,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.94 — 2026-10-31
+
+### Changed
+
+- **New apps now get Pest instead of bare PHPUnit.** The kit's 22 tests are
+  ported one for one to `test()` closures with `expect()`, and
+  `tests/Pest.php` binds `tests/Feature` to `Tests\TestCase` with
+  `RefreshDatabase`, the same shape Laravel's own Pest starter kits ship. The
+  suite still reports 22 tests and 655 assertions. `composer test` and
+  `php artisan test` both run Pest; `phpunit.xml` is unchanged and still
+  configures it.
+- `require-dev` swaps `phpunit/phpunit` for `pestphp/pest` `^4.7` (v4.7.8 in
+  the lockfile, which pairs with the PHPUnit 12.5.33 the kit already had, so
+  PHPUnit itself did not move). Pest brings its own transitive packages
+  (`brianium/paratest`, `pestphp/pest-plugin-arch`, and others); nothing in the
+  production `require` changed.
+- Every test in `tests/Feature` now uses `RefreshDatabase`, including the
+  example test that previously did not. It still asserts only that `/`
+  responds 200.
+- `pestphp/pest-plugin-laravel` is **not** included: it fails the estate's
+  third-party freshness bar, and none of the kit's tests need its function
+  helpers (`$this->get()` works through `Tests\TestCase`).
+- **Consumer action: none.** An app made from an earlier kit keeps its PHPUnit
+  tests; they are your own code and nothing here touches them. To move such an
+  app to Pest, follow Pest's installation guide.
+
 ## 1.1.93 — 2026-10-30
 
 ### Changed
