@@ -9,6 +9,68 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.99 — 2026-11-01
+
+### Changed
+
+- **BREAKING for code you add to a new app: react-fancy 6.0.0** (was 5.72.0;
+  range `^5.30.0` to `^6.0.0`). react-fancy 6 makes `<Button>` default to
+  `type="button"` (Change Council CC-fancy-0003). A `<Button>` inside a
+  `<form>` with no `type` used to submit the form and now does not. If that
+  untyped Button was the form's only submit control, pressing Enter in a field
+  stops submitting it too. `PromptInput`'s send button also no longer submits a
+  surrounding form of yours.
+- **Every kit form already submits, and nothing in the kit needed to change.**
+  All six forms (login, register, forgot-password, reset-password, profile,
+  password) have had an explicit `type="submit"` on their submit `Button` since
+  the kit's auth pages were written. Every other kit `Button` (Sign out, the
+  theme toggle, the welcome-page links) is outside any form, and no kit
+  `Button` uses `form="id"`. A new Pest file, `tests/Feature/FormSubmissionTest.php`,
+  now fails the build if a kit form loses its `type="submit"` control, and
+  covers the endpoint each form posts to.
+- **What to DO, if you added your own forms to an app made from the kit and you
+  upgrade that app to react-fancy 6:** add `type="submit"` to each `<Button>`
+  that is meant to submit a form. To list the candidates:
+
+  ```bash
+  grep -rlE '<(form|Form)\b' --include='*.tsx' --include='*.jsx' resources/js \
+    | xargs grep -nE '<(Button|Action)\b'
+  grep -rnE '<(Button|Action)\b[^>]*\bform="' --include='*.tsx' --include='*.jsx' resources/js
+  ```
+
+  Any hit without a `type` that is the form's Save / Submit / Send / Sign in
+  needs `type="submit"`; Cancel and other action Buttons are correct untyped.
+  **Existing apps are not affected until they upgrade react-fancy themselves:**
+  `^5` ranges never resolve to 6.
+- `fancy-inertia` 0.14.0 to 0.14.1 (range `>=0.14.1 <2.0`), and the lockfile
+  takes `fancy-app-update` 0.7.1 (a transitive peer of `fancy-pwa` and
+  `fancy-inertia`). Both widen their react-fancy peer range to admit 6, so
+  `npm ls` stays clean. No API change.
+
+### Fixed
+
+- **New apps now actually load Instrument Sans.** Before, `@fonts` was missing
+  from `resources/views/app.blade.php`, and pages rendered in the system font.
+  `vite.config.js` already downloaded the font at build time and served it from
+  the app's own origin, but the `@font-face` rules and preloads reach a page
+  only through Laravel's `@fonts` directive, which was never called. It now sits
+  before `@vite(...)`, and it adds the CSP nonce when the app uses one.
+  `tests/Feature/FontsTest.php` covers it. **Existing apps:** add the single
+  line `@fonts` above `@viteReactRefresh` in `resources/views/app.blade.php`.
+
+`composer audit --locked` and `npm audit --omit=dev` both report no
+advisories.
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, react-fancy 6.0.0 installed): register submitted by clicking the
+button, sign out, log in submitted by pressing Enter in the password field,
+forgot-password (reset link mailed), reset-password submitted by Enter, then
+profile and password updates. Each request reached the server and redirected
+as expected, with 0 console errors and 0 warnings. `body` computes
+`"Instrument Sans"` and `document.fonts.check('16px "Instrument Sans"')` is
+true. Every font file was served from the app's own origin, with no request
+to an external font host.
+
 ## 1.1.98 — 2026-11-01
 
 ### Changed

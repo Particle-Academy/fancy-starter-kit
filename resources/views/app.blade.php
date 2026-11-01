@@ -23,6 +23,8 @@
         })();
     </script>
 
+    {{-- Self-hosted Instrument Sans (vite.config.js `fonts`): preloads + @font-face. --}}
+    @fonts
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     @inertiaHead
