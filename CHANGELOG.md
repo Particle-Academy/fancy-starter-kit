@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.101 — 2026-11-01
+
+### Changed
+
+- **react-fancy 6.1.1** (was 6.1.0; range `^6.1.0` to `^6.1.1`). A patch with
+  three fixes: `Breadcrumbs` crumbs that navigate by `onClick` now work in the
+  collapsed (narrow-window) dropdown, the `MultiSwitch` thumb re-measures when
+  the selected option changes size, and `Tabs` keeps a tab stop when the
+  controlled value matches no tab. The kit's pages use none of these
+  components, so nothing in the kit renders differently. **No action needed.**
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, `npm run dev`, react-fancy 6.1.1 installed): register submitted by
+clicking the button, sign out, log in submitted by pressing Enter in the
+password field, profile saved (303), password changed (303). A mouse-clicked
+theme toggle shows no ring and matches no `:focus-visible`; tabbing to the
+profile Save button shows the blue `:focus-visible` ring. 0 console errors and
+0 warnings.
+
 ## 1.1.100 — 2026-11-01
 
 ### Changed
