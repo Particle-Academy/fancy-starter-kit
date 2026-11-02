@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.103 — 2026-11-01
+
+### Changed
+
+- **react-fancy 6.3.0** (was 6.2.0; range `^6.2.0` to `^6.3.0`). Additive: a
+  new `Stepper` component (ordered steps with `upcoming` / `current` /
+  `complete` / `error` states, from a JSON `steps` array or `Stepper.Step`
+  children), and `Breadcrumbs.Item` now accepts the element's HTML attributes
+  in its type. The kit uses neither, so nothing in the kit renders differently.
+  **No action needed.**
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, `npm run dev`, react-fancy 6.3.0 installed): register submitted by
+clicking the button, sign out, log in submitted by pressing Enter in the
+password field, profile saved (303), password changed (303). A mouse-clicked
+theme toggle shows no ring and matches no `:focus-visible`; tabbing to the
+profile Save button shows the `:focus-visible` ring. 0 console errors and 0
+warnings.
+
 ## 1.1.102 — 2026-11-01
 
 ### Changed
