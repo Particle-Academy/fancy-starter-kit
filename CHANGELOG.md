@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.102 — 2026-11-01
+
+### Changed
+
+- **react-fancy 6.2.0** (was 6.1.1; range `^6.1.1` to `^6.2.0`). Additive:
+  `Sidebar.Item` gains `dotTooltip` and `badgeLabel`, and an expanded item's
+  label and badge are now separated by a visually hidden space in its
+  accessible name. The kit does not use `Sidebar`, so nothing in the kit
+  renders differently. **No action needed**, unless your app snapshots Sidebar
+  markup: an expanded item with a `badge` gains one
+  `<span class="sr-only"> </span>`.
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, `npm run dev`, react-fancy 6.2.0 installed): register submitted by
+clicking the button, sign out, log in submitted by pressing Enter in the
+password field, profile saved (303), password changed (303). A mouse-clicked
+theme toggle shows no ring and matches no `:focus-visible`; tabbing to the
+profile Save button shows the `:focus-visible` ring. 0 console errors and 0
+warnings.
+
 ## 1.1.101 — 2026-11-01
 
 ### Changed
