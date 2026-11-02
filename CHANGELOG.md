@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.106 — 2026-11-02
+
+### Changed
+
+- **react-fancy 6.6.0** (was 6.5.0; range `^6.5.0` to `^6.6.0`). Additive:
+  `CodeBlock` and `CodeView` colours are now CSS variables declared on the
+  component root, switched to the dark palette by `.dark` /
+  `[data-theme="dark"]`, so server-rendered HTML is correct in either theme
+  with no light flash before hydration; PHP snippets without `<?php` now
+  highlight. Brings `@particle-academy/fancy-file-commons` 0.5.0 (installed
+  for you as a react-fancy dependency). The kit uses neither component, so
+  nothing in the kit renders differently. **No action needed.**
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, `npm run dev`, react-fancy 6.6.0 and fancy-file-commons 0.5.0
+installed): register submitted by clicking the button, sign out, log in
+submitted by pressing Enter in the password field, profile saved (303),
+password changed (303). The theme toggle, mouse-clicked to dark, puts `dark`
+on `<html>`, stores `dark`, shows no ring and matches no `:focus-visible`; a
+reload stays dark. Tabbing to the profile Save button shows the
+`:focus-visible` ring. 0 console errors and 0 warnings.
+
 ## 1.1.105 — 2026-11-02
 
 ### Changed
