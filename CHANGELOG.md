@@ -9,6 +9,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.100 — 2026-11-01
+
+### Changed
+
+- **react-fancy 6.1.0** (was 6.0.0; range `^6.0.0` to `^6.1.0`). Additive:
+  `Sidebar.Item` gains `dot`, `dotLabel` and `collapsedBadge`, and `Sidebar`
+  gains `navLabel` and `keyboardNav`. All are opt-in, and the kit uses none of
+  them, so no kit page renders differently because of them. **No action needed**
+  in an app made from the kit.
+
+### Fixed
+
+- **A `Button` no longer keeps a focus ring after a mouse click** (from
+  react-fancy 6.1.0). The ring moved from `:focus` to `:focus-visible` and now
+  uses the focus colour (`--fancy-focus`, blue-500) instead of falling back to
+  `currentColor`. In the kit this applies to every `Button`: the theme toggle,
+  Sign out, and each form's submit button. Keyboard focus
+  still shows the ring. If you added `focus:ring-*` classes to a `Button`'s
+  `className` in your app, change them to `focus-visible:ring-*` to keep them.
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, `npm run dev`, react-fancy 6.1.0 installed): register submitted by
+clicking the button, sign out, log in submitted by pressing Enter in the
+password field, profile saved, password changed (303). After a mouse click on
+the theme toggle, the focused `Button` matches no `:focus-visible` and has no
+box-shadow ring. Tabbing to the profile form's Save `Button` matches
+`:focus-visible` and shows the blue ring. 0 console errors and 0 warnings.
+
 ## 1.1.99 — 2026-11-01
 
 ### Changed
