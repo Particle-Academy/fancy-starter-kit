@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.105 — 2026-11-02
+
+### Changed
+
+- **react-fancy 6.5.0** (was 6.4.0; range `^6.4.0` to `^6.5.0`). Additive:
+  `CodeBlock` and `CodeView` now highlight TypeScript, JavaScript, JSON, PHP,
+  Python, Go, Markdown, shell and dotenv as well as HTML, using grammars shared
+  through `@particle-academy/fancy-file-commons` 0.4.0 (installed for you as a
+  react-fancy dependency). The kit uses neither component, so nothing in the
+  kit renders differently. The kit does not depend on `fancy-code`.
+  **No action needed.**
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit (headed
+browser, `npm run dev`, react-fancy 6.5.0 and fancy-file-commons 0.4.0
+installed): register submitted by clicking the button, sign out, log in
+submitted by pressing Enter in the password field, profile saved (303),
+password changed (303). A mouse-clicked theme toggle shows no ring and matches
+no `:focus-visible`; tabbing to the profile Save button shows the
+`:focus-visible` ring. 0 console errors and 0 warnings.
+
 ## 1.1.104 — 2026-11-01
 
 ### Changed
