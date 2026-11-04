@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.107 — 2026-11-04
+
+### Changed
+
+- **react-fancy 6.6.1** (was 6.6.0; range `^6.6.0` to `^6.6.1`). A behaviour fix
+  with no API change: `VirtualList` no longer pauses `followTail` by itself when
+  its viewport grows, a clamp no longer resumes a paused list, and `ArrowUp` at
+  the bottom now pauses. The kit does not use `VirtualList`, so nothing in the
+  kit behaves differently. **No action needed.**
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this commit's manifests
+(headless Chromium, `npm run dev`, react-fancy 6.6.1 and fancy-file-commons 0.5.0
+installed): register submitted by clicking the button, sign out, log in submitted
+by pressing Enter in the password field, profile saved (303), password changed
+(303). The theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores
+`dark` and matches no `:focus-visible`; a reload stays dark. Tabbing to the
+profile Save button on a settled page matches `:focus-visible`. 0 console errors
+and 0 warnings.
+
 ## 1.1.106 — 2026-11-02
 
 ### Changed
