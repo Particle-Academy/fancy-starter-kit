@@ -13,12 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **react-fancy 6.7.1** (was 6.6.1; range `^6.6.1` to `^6.7.1`). Adds `NumberField`
+- **react-fancy 6.7.2** (was 6.6.1; range `^6.6.1` to `^6.7.2`). Adds `NumberField`
   and `FileUpload`'s `onReject`. 6.7.1 is the security fix for `NumberField`, new
   in 6.7.0: a very long pasted run of digits no longer backtracks badly enough to
-  freeze the tab. The kit uses neither, so nothing in the kit behaves differently.
-  **No action needed**, unless your app adopted `NumberField` on 6.7.0, in which
-  case update.
+  freeze the tab. 6.7.2 keeps `PromptInput`'s `/` and `@` menu row in view and
+  gives the menu stable handles. The kit uses none of these, so nothing in the kit
+  behaves differently. **No action needed**, unless your app adopted `NumberField`
+  on 6.7.0, in which case update.
 - **fancy-echarts 6.2.0** (was 6.1.0; range `^6.0.0` to `^6.2.0`). A chart's `ref`
   now holds `{ instance, element, capture }`, and `captureEChart` is new. **BREAKING
   for TypeScript only if your app passes a ref to a chart:** `useRef<HTMLDivElement>`
@@ -27,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   chart ref. **Otherwise no action needed.**
 
 Dev-mode smoke on a fresh, git-initialised scaffold of this commit's manifests
-(headless Chromium, `npm run dev`, react-fancy 6.7.1 and fancy-echarts 6.2.0
+(headless Chromium, `npm run dev`, react-fancy 6.7.2 and fancy-echarts 6.2.0
 installed): register submitted by clicking the button, sign out, log in submitted
 by pressing Enter in the password field, profile saved (303), password changed
 (303). The theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores
