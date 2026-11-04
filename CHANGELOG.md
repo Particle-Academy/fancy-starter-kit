@@ -9,17 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.109 — 2026-11-04
+
+### Changed
+
+- **react-fancy 6.7.2** (was 6.7.1; range `^6.7.1` to `^6.7.2`). Keeps `PromptInput`'s
+  `/` and `@` menu row in view while arrowing, stops long names scrolling the menu
+  sideways, and gives the menu stable handles. The kit doesn't use `PromptInput`.
+  **No action needed.**
+
 ## 1.1.108 — 2026-11-04
 
 ### Changed
 
-- **react-fancy 6.7.2** (was 6.6.1; range `^6.6.1` to `^6.7.2`). Adds `NumberField`
+- **react-fancy 6.7.1** (was 6.6.1; range `^6.6.1` to `^6.7.1`). Adds `NumberField`
   and `FileUpload`'s `onReject`. 6.7.1 is the security fix for `NumberField`, new
   in 6.7.0: a very long pasted run of digits no longer backtracks badly enough to
-  freeze the tab. 6.7.2 keeps `PromptInput`'s `/` and `@` menu row in view and
-  gives the menu stable handles. The kit uses none of these, so nothing in the kit
-  behaves differently. **No action needed**, unless your app adopted `NumberField`
-  on 6.7.0, in which case update.
+  freeze the tab. The kit uses neither, so nothing in the kit behaves differently.
+  **No action needed**, unless your app adopted `NumberField` on 6.7.0, in which
+  case update.
 - **fancy-echarts 6.2.0** (was 6.1.0; range `^6.0.0` to `^6.2.0`). A chart's `ref`
   now holds `{ instance, element, capture }`, and `captureEChart` is new. **BREAKING
   for TypeScript only if your app passes a ref to a chart:** `useRef<HTMLDivElement>`
