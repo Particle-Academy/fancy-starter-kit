@@ -109,6 +109,27 @@ To turn it on:
 Inertia falls back to client rendering whenever the SSR daemon isn't reachable,
 so leaving SSR off — or forgetting to start the daemon — never breaks the app.
 
+## Sessions, queues and cache
+
+The kit uses Laravel's **`database`** driver for all three
+(`SESSION_DRIVER`, `QUEUE_CONNECTION`, `CACHE_STORE`), so a fresh install needs
+nothing extra and behaves the same on every machine and in CI. Atomic locks
+(`Cache::lock()`) work on the database store too. The `REDIS_*` lines in
+`.env.example` are Laravel's defaults and are unused until you point a driver at
+Redis.
+
+To move to Redis, pick a client and install it first. Laravel fails at the first
+Redis call if the chosen client isn't there:
+
+- **`phpredis`** (`REDIS_CLIENT=phpredis`) is a PHP extension. It's the faster
+  choice, but every dev machine, CI image and server needs the `redis` extension.
+- **`predis`** (`REDIS_CLIENT=predis`) is pure PHP:
+  `composer require predis/predis`. It works anywhere PHP runs.
+
+Then set `SESSION_DRIVER=redis`, `QUEUE_CONNECTION=redis` and/or
+`CACHE_STORE=redis`, and the `REDIS_HOST`/`REDIS_PORT`/`REDIS_PASSWORD` for your
+server.
+
 ## License
 
 MIT.
