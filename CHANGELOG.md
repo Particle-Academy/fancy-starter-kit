@@ -13,11 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **react-fancy 6.9.0** (was 6.7.2; range `^6.7.2` to `^6.9.0`). 6.9.0 follows
-  `dir="rtl"`: overlays, form inputs, keys and direction-meaning icons mirror in a
-  right-to-left page, and edge-anchored defaults are logical (`Drawer` `side="end"`,
-  `Toast` `position="bottom-end"`). Left-to-right output is box-identical. 6.8.0 adds
-  `QrCodePanel`, `qrCodeSvg` and `qrCodePng` on the `./qr-code` subpath. **No action
+- **react-fancy 6.10.0** (was 6.7.2; range `^6.7.2` to `^6.10.0`). 6.10.0 adds
+  `PhoneInput`, a country picker and number whose value is E.164 or `null`. 6.9.0
+  follows `dir="rtl"`: overlays, form inputs, keys and direction-meaning icons mirror
+  in a right-to-left page, and edge-anchored defaults are logical (`Drawer`
+  `side="end"`, `Toast` `position="bottom-end"`). Left-to-right output is
+  box-identical. 6.8.0 adds `QrCodePanel`, `qrCodeSvg` and `qrCodePng` on the
+  `./qr-code` subpath. The kit uses none of the new components. **No action
   needed**, unless a test of yours reads `input.style.paddingLeft` (now
   `paddingInlineStart`) or selects on `[data-side="right"]` for a default `Drawer`.
   The kit's own `Toast.Provider` passes `position="bottom-right"`, which stays on the
