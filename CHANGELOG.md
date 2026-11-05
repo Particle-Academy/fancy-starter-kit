@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.110 — 2026-11-04
+
+### Changed
+
+- **react-fancy 6.9.0** (was 6.7.2; range `^6.7.2` to `^6.9.0`). 6.9.0 follows
+  `dir="rtl"`: overlays, form inputs, keys and direction-meaning icons mirror in a
+  right-to-left page, and edge-anchored defaults are logical (`Drawer` `side="end"`,
+  `Toast` `position="bottom-end"`). Left-to-right output is box-identical. 6.8.0 adds
+  `QrCodePanel`, `qrCodeSvg` and `qrCodePng` on the `./qr-code` subpath. **No action
+  needed**, unless a test of yours reads `input.style.paddingLeft` (now
+  `paddingInlineStart`) or selects on `[data-side="right"]` for a default `Drawer`.
+  The kit's own `Toast.Provider` passes `position="bottom-right"`, which stays on the
+  physical right in a right-to-left page; pass `"bottom-end"` if you want it to mirror.
+
 ## 1.1.109 — 2026-11-04
 
 ### Changed
