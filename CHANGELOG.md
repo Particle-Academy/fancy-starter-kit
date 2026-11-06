@@ -37,6 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   The kit renders no `Modal`, `Drawer` or `Command`, so the focus fix changes nothing
   in the kit's own pages.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release's manifests
+(headless Chromium, `npm run dev`, react-fancy 6.11.0 installed): register submitted
+by clicking the button, sign out, log in submitted by pressing Enter in the password
+field, profile saved (303), password changed (303). The theme toggle, mouse-clicked
+to dark, puts `dark` on `<html>`, stores `dark` and matches no `:focus-visible`; a
+reload stays dark. Tabbing to the profile Save button matches `:focus-visible`. 0
+console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.109 — 2026-11-04
 
 ### Changed
