@@ -9,11 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
-## 1.1.110 — 2026-11-04
+## 1.1.110 — 2026-11-05
+
+### Added
+
+- **README: "Sessions, queues and cache".** The kit stays on Laravel's `database`
+  driver for all three. The section covers how to move to Redis, and why to pick
+  `phpredis` or `predis` first. **No action needed.**
 
 ### Changed
 
-- **react-fancy 6.10.0** (was 6.7.2; range `^6.7.2` to `^6.10.0`). 6.10.0 adds
+- **react-fancy 6.11.0** (was 6.7.2; range `^6.7.2` to `^6.11.0`). 6.11.0 makes
+  `Modal`, `Drawer` and `Command` trap focus. Before this, focus never moved into an
+  open dialog, Tab walked out of it, and closing never returned focus to the trigger.
+  The `Modal.Header` and `Drawer.Header` close buttons grow to a 44px target and take
+  a translatable `closeLabel`. 6.10.0 adds
   `PhoneInput`, a country picker and number whose value is E.164 or `null`. 6.9.0
   follows `dir="rtl"`: overlays, form inputs, keys and direction-meaning icons mirror
   in a right-to-left page, and edge-anchored defaults are logical (`Drawer`
@@ -24,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `paddingInlineStart`) or selects on `[data-side="right"]` for a default `Drawer`.
   The kit's own `Toast.Provider` passes `position="bottom-right"`, which stays on the
   physical right in a right-to-left page; pass `"bottom-end"` if you want it to mirror.
+  The kit renders no `Modal`, `Drawer` or `Command`, so the focus fix changes nothing
+  in the kit's own pages.
 
 ## 1.1.109 — 2026-11-04
 
