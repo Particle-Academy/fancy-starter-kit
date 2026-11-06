@@ -26,6 +26,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `resources/js/layouts/AuthLayout.tsx` and `resources/js/Pages/Welcome.tsx`, unless
   you've already restyled those pages.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, `composer test` 41 passed). In the rendered page, `/login`, `/register`
+and `/forgot-password` each have exactly one `main`, with the h1 inside it and the home
+link in a `header`, and the card is still 384px wide. `/` runs h1 then six h2s, with no
+h3. The usual checks passed:
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the theme toggle and Tab focus behave as in 1.1.112;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.112 — 2026-11-06
 
 ### Changed
