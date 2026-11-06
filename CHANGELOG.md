@@ -23,6 +23,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   no edits. The Pest browser plugin, which Fancy recommends for browser tests, needs
   Pest `^5.2.1`.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, Pest 5.3.5 and PHPUnit 13.4.5 installed, `composer test` 34 passed):
+register submitted by clicking the button, sign out, log in submitted by pressing Enter
+in the password field, profile saved (303) and password changed (303), both confirmed
+in the database. The theme toggle, mouse-clicked to dark, puts `dark` on `<html>`,
+stores `dark` and matches no `:focus-visible`; a reload stays dark. Tabbing to the
+profile Save button matches `:focus-visible`. 0 console errors and 0 warnings, with the
+listener proven by a planted error and warning.
+
 ## 1.1.111 — 2026-11-06
 
 ### Security
