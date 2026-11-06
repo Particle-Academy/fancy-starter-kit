@@ -18,7 +18,7 @@
         "laravel/pint": "^1.30",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.9.5",
-        "pestphp/pest": "^4.7"
+        "pestphp/pest": "^5"
     },
     "autoload": {
         "psr-4": {

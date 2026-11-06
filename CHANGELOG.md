@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.112 — 2026-11-06
+
+### Changed
+
+- **Pest 5** for the kit's tests: `pestphp/pest` `^4.7` to `^5` (5.3.5 installed), which
+  brings PHPUnit 13 (13.4.5) and the Pest plugins at 5.x. Dev-only: nothing the app runs
+  changed. The kit's 34 tests pass unchanged, and the `RefreshDatabase` binding in
+  `tests/Pest.php` works as before. PHPUnit 13 adds `sebastian/file-filter` and
+  `sebastian/git-state` to the lockfile. **Consumer action:** an existing app made from the
+  kit is unaffected. To follow, set `pestphp/pest` to `^5` and run `composer update
+  pestphp/pest -W`. The kit hit no Pest 5 or PHPUnit 13 breaks, so its own tests needed
+  no edits. The Pest browser plugin, which Fancy recommends for browser tests, needs
+  Pest `^5.2.1`.
+
 ## 1.1.111 — 2026-11-06
 
 ### Security
