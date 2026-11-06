@@ -130,7 +130,7 @@ export default function Welcome() {
                             )}
                         >
                             <div className="flex items-center justify-between">
-                                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">{j.title}</h3>
+                                <h2 className="font-semibold text-zinc-900 dark:text-zinc-100">{j.title}</h2>
                                 <span className="text-violet-500 opacity-0 transition group-hover:opacity-100">→</span>
                             </div>
                             <p className="mt-1.5 text-sm text-zinc-500">{j.blurb}</p>

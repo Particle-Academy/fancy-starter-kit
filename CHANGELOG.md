@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.113 — 2026-11-06
+
+### Fixed
+
+- **Accessibility: the login, register and password pages have a `main` landmark.**
+  `AuthLayout` now puts the logo in a `<header>` and the card in `<main>`. axe flagged
+  `landmark-one-main` and `region`, because nothing on those pages sat inside a landmark.
+  The card's classes moved with it, so it looks the same.
+- **Accessibility: the welcome page's cards are `h2`, not `h3`.** They followed the
+  `h1` directly, so axe flagged `heading-order`. Same classes, so the cards look the same.
+- Both were reported by PS Mapper running axe on an app made from the kit.
+  `tests/Unit/LandmarksTest.php` checks the layout sources for both. Before the fix it
+  failed on all three of the cases it now guards.
+- **Consumer action:** in an app made from an earlier kit, make the same two edits to
+  `resources/js/layouts/AuthLayout.tsx` and `resources/js/Pages/Welcome.tsx`, unless
+  you've already restyled those pages.
+
 ## 1.1.112 — 2026-11-06
 
 ### Changed
