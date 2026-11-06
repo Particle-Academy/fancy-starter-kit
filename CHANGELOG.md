@@ -9,6 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.111 — 2026-11-06
+
+### Security
+
+- **Symfony 8.1.11 in the kit's lockfile** for `symfony/http-foundation` (was 8.1.10),
+  `symfony/http-kernel`, `symfony/routing` and `symfony/serializer` (were 8.1.2 to 8.1.3).
+  That clears the 9 advisories `composer audit` reported against the committed lockfile,
+  which a fresh `laravel new` installed as is. **Consumer action:** in an app made from an
+  earlier kit, run `composer update symfony/http-foundation symfony/http-kernel
+  symfony/routing symfony/serializer`, then `composer audit`.
+
+Only the lockfile changed: no `composer.json` range moved and no code changed. 34 tests
+pass and `composer audit` reports no advisories.
+
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, Symfony 8.1.11 installed): register submitted by clicking the button,
+sign out, log in submitted by pressing Enter in the password field, profile saved (303)
+and password changed (303), both confirmed in the database. The theme toggle,
+mouse-clicked to dark, puts `dark` on `<html>`, stores `dark` and matches no
+`:focus-visible`; a reload stays dark. Tabbing to the profile Save button matches
+`:focus-visible`. 0 console errors and 0 warnings, with the listener proven by a planted
+error and warning.
+
 ## 1.1.110 — 2026-11-05
 
 ### Added
