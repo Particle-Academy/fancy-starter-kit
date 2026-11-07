@@ -31,6 +31,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   colour. In an app made from an earlier kit,
   `npm install @particle-academy/react-fancy@^6.13.0` to follow.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, react-fancy 6.13.0 installed, `composer test` 41 passed). `/login`,
+`/register` and `/forgot-password` each still have exactly one `main`, with the h1 inside
+it and the home link in a `header`, and the card is 384px wide. `/` runs h1 then six h2s.
+The login page's Email and Password fields carry no `placeholder`. With a probe placeholder
+set in the page only, both placeholders compute to `oklch(0.552 0.016 285.938)`, the muted
+token (zinc-500), not faint (`oklch(0.705 0.015 286.067)`, zinc-400). Chromium's
+`getComputedStyle(input, '::placeholder')` returns the input's own text colour, so this was
+read from the placeholder node in the input's shadow root. The usual checks passed:
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores `dark` and
+  matches no `:focus-visible`, and a reload stays dark; Tabbing to the profile Save
+  button matches `:focus-visible`;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.114 — 2026-11-07
 
 ### Changed
