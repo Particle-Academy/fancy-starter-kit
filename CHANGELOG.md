@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.115 — 2026-11-07
+
+### Changed
+
+- **react-fancy 6.13.0** (was 6.12.0). The range moves from `^6.12.0` to `^6.13.0`. Two
+  changes:
+  - **Per-option `lang` and `dir`:** the object form of `InputOption` and
+    `AutocompleteOption` takes optional `lang` and `dir`, so a language switcher can mark
+    each label's language (WCAG 3.1.2). An option that sets neither renders as before.
+  - **Readable faint text moves to muted:** placeholders on Input, Textarea and every field
+    on the shared input classes, empty-value text, in-box affixes and a list of secondary
+    labels now read `--fancy-text-muted` instead of `--fancy-text-faint`, which reaches AA.
+    In light mode they are one palette step darker (zinc-400 to zinc-500), and in dark mode
+    one step lighter.
+- **The kit's own pages look the same.** The auth and settings pages use `Input`, so their
+  fields take the muted placeholder colour, but none of them sets a `placeholder`
+  (react-fancy's Input defaults it to empty) or an affix, so no text changes colour. The
+  kit renders no Select, Autocomplete, view-mode field, Menu, Sidebar, Accordion or Table.
+  **Consumer action:** none. A placeholder you add to a kit field will show in the muted
+  colour. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.13.0` to follow.
+
 ## 1.1.114 — 2026-11-07
 
 ### Changed
