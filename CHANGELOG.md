@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.114 — 2026-11-07
+
+### Changed
+
+- **react-fancy 6.12.0** (was 6.11.0). The range moves from `^6.11.0` to `^6.12.0`. This
+  takes in two releases:
+  - **6.11.1:** `FileUpload` text follows the `--fancy-text-*` theme tokens, and its
+    thumbnail remove button now shows on keyboard focus instead of only on hover.
+  - **6.12.0:** secondary grey text across the kit (80 lines in 44 files) moves off bare
+    `text-zinc-*` onto the `--fancy-text-*` tokens, so an app that maps the tokens themes
+    it too, and that text reaches AA contrast by default. In light mode some of it looks
+    a step darker: Calendar's out-of-month days and chart tick marks noticeably,
+    placeholders and the Modal, Drawer, Toast and other close or icon buttons from
+    zinc-400 to zinc-500, and zinc-600 hovers to zinc-700. No token's default value
+    changed.
+- **The kit's own pages look the same.** They use `Button`, `Input`, `Checkbox`,
+  `Callout`, `Badge`, `Icon` and the `Toast` provider, and none of those changed on what
+  the kit renders. The `Input` change is the password reveal, which the kit doesn't turn
+  on, and the `Toast` change is its close button and default icon, which show only when
+  an app fires a toast. **Consumer action:** none. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.12.0` to follow.
+
 ## 1.1.113 — 2026-11-06
 
 ### Fixed
