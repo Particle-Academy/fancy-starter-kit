@@ -9,6 +9,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.116 — 2026-11-07
+
+### Changed
+
+- **react-fancy 6.15.1** (was 6.13.0). The range moves from `^6.13.0` to `^6.15.1`. This
+  takes in three releases:
+  - **6.14.0:** adds `SetupWizard`, and `OtpInput` gains a named group, translatable cell
+    names, SMS one-time-code autofill and whole codes landing in one cell. `CodeBlock` no
+    longer rewrites its code on every re-render.
+  - **6.15.0:** interactive form-control outlines move onto `--fancy-border-strong`, whose
+    light and dark defaults are now both zinc-500, to meet WCAG 1.4.11 (3:1 non-text
+    contrast). Before, zinc-300 on white was 1.48:1 and zinc-700 on the `#1e1e24` dark field
+    was 1.59:1.
+  - **6.15.1:** corrects 6.15.0 for native checkboxes and radios (Checkbox, CheckboxGroup,
+    RadioGroup). The browser draws those boxes itself, so the border classes 6.15.0 darkened
+    never rendered and are removed. Instead the checked colour is set with `accent-color`
+    (blue-600), and in dark mode the box carries `color-scheme: dark`, so the browser draws
+    its dark box on a dark surface rather than a white one.
+- **Visible on the kit's own pages:**
+  - **Field outlines:** the `Input` resting outline on login, register, forgot-password,
+    reset-password and the profile and password settings goes from zinc-300 to zinc-500 in
+    light mode, and from zinc-700 to zinc-500 in dark mode. Focus, invalid and disabled
+    styling are unchanged.
+  - **The "Remember me" checkbox on login:** in dark mode it is now the browser's dark box
+    instead of a white one, and when checked it fills blue-600. Its outline is the
+    browser's own in both modes, as before.
+  - The kit's buttons are solid `violet` or `ghost`, so the outline Button's darker hover
+    doesn't show, and the kit renders no `SetupWizard`, `OtpInput` or `CodeBlock`.
+
+  **Consumer action:** none. To keep the previous field outlines, set
+  `--fancy-border-strong` to `var(--color-zinc-300)` and `--fancy-border-strong-dark` to
+  `var(--color-zinc-700)`. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.15.1` to follow.
+
 ## 1.1.115 — 2026-11-07
 
 ### Changed
