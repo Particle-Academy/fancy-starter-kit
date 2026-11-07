@@ -43,6 +43,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `var(--color-zinc-700)`. In an app made from an earlier kit,
   `npm install @particle-academy/react-fancy@^6.15.1` to follow.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, react-fancy 6.15.1 installed, `composer test` 41 passed). The login Email
+field's resting outline, not focused, is 1px on all four sides and resolves to
+`oklch(0.552 0.016 285.938)`, which is `#71717b` (zinc-500), in both modes. Against the
+field's own opaque background that is 4.83:1 on `#ffffff` in light mode and 3.44:1 on
+`#1e1e24` in dark mode, both above 3:1. In dark mode the "Remember me" checkbox computes
+`color-scheme: dark` while `<html>` stays `normal`; on 6.15.0 it computed `normal`. Its
+`accent-color` is blue-600 (`oklch(0.546 0.245 262.881)`) in both modes. The 1.1.115
+placeholder check still holds: a probe placeholder on the login fields computes to the
+muted token. `/login`, `/register` and `/forgot-password` each still have exactly one
+`main`, with the h1 inside it and the home link in a `header`, and the card is 384px wide.
+`/` runs h1 then six h2s. The usual checks passed:
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores `dark` and
+  matches no `:focus-visible`, and a reload stays dark; Tabbing to the profile Save
+  button matches `:focus-visible`;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.115 — 2026-11-07
 
 ### Changed
