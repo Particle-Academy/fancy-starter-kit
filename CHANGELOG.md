@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.122 — 2026-11-08
+
+### Fixed
+
+- **Running the tests could wipe your development database.** `phpunit.xml` set
+  `DB_CONNECTION=sqlite` and `DB_DATABASE=:memory:` as plain `<env>` entries. When the process
+  environment already sets `DB_CONNECTION` (many hosting setups do, and so do local tools that
+  give every process its dev database), a plain `<env>` does not override it, and Laravel
+  reads `$_SERVER` before `$_ENV`. The suite then ran against that real database, and
+  `RefreshDatabase` dropped its tables. `DB_CONNECTION`, `DB_DATABASE` and `DB_URL` are now
+  forced with both `<env force="true">` and `<server force="true">`, with a comment saying
+  why. A new test, `tests/Unit/TestDatabaseIsolationTest.php`, checks that the suite's
+  default connection is an in-memory sqlite database. It failed before this fix with
+  `DB_CONNECTION=pgsql` in the environment, and passes after.
+  **Consumer action:** in an app made from an earlier kit, copy the six `DB_*` lines and the
+  comment from this release's `phpunit.xml`. Until you do, unset `DB_CONNECTION`,
+  `DB_DATABASE` and `DB_URL` before running the tests if your environment sets them.
+
 ## 1.1.121 — 2026-11-08
 
 ### Changed
