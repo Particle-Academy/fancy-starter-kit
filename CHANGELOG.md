@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.120 — 2026-11-08
+
+### Changed
+
+- **react-fancy 6.18.0** (was 6.17.1). The range moves from `^6.17.1` to `^6.18.0`. Two
+  additions:
+  - **`--fancy-accent` / `--fancy-accent-dark`:** a theme token for the checked colour of
+    native `Checkbox`, `CheckboxGroup` and `RadioGroup`, which was hard-coded blue-600. Both
+    default to blue-600.
+  - **`Pillbox` `maxLength`:** an optional cap on the length of each pill, with the count
+    left announced near the cap.
+- **The kit's own pages look the same.** The kit sets neither accent variable, so its
+  "Remember me" checkbox stays blue-600 when checked, and it renders no `Pillbox`.
+  **Consumer action:** none. To theme the checkbox colour, set `--fancy-accent` (and
+  `--fancy-accent-dark`) beside your other `--fancy-*` tokens. In an app made from an
+  earlier kit, `npm install @particle-academy/react-fancy@^6.18.0` to follow.
+
 ## 1.1.119 — 2026-11-08
 
 ### Changed
