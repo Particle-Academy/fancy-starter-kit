@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.123 — 2026-11-08
+
+### Changed
+
+- **react-fancy 6.19.0** (was 6.18.1). The range moves from `^6.18.1` to `^6.19.0`.
+  Validation text gets a theme token, `--fancy-error` / `--fancy-error-dark`, and defaults
+  that meet WCAG 1.4.3's 4.5:1. The error message and required asterisk of `Field` (and so
+  `Input`), `Checkbox` and `Switch` were hard-coded red-500: 3.81:1 on white and 4.36:1 on
+  `#1e1e24`. They are now red-600 in light mode (4.77:1 on white) and red-400 in dark mode
+  (5.74:1 on `#1e1e24`).
+- **Visible on the kit's own pages:** the required asterisk on every field of login,
+  register, forgot-password, reset-password and the profile and password settings is one
+  step darker in light mode and one step lighter in dark mode. So is any field error, such
+  as "These credentials do not match our records." on login. Input error borders stay
+  red-500.
+  **Consumer action:** none. To theme the colour, set `--fancy-error` (and
+  `--fancy-error-dark`) beside your other `--fancy-*` tokens. In an app made from an
+  earlier kit, `npm install @particle-academy/react-fancy@^6.19.0` to follow.
+
 ## 1.1.122 — 2026-11-08
 
 ### Fixed
