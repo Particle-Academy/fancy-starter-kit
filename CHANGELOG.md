@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.119 — 2026-11-08
+
+### Changed
+
+- **react-fancy 6.17.1** (was 6.17.0). The range moves from `^6.17.0` to `^6.17.1`. Two
+  changes:
+  - **`Pillbox` accessibility fix:** its text input takes `label`, `labelHidden`,
+    `description`, `error`, `required` and `id` through the shared `Field` wrapper, links
+    its messages with `aria-describedby`, sets `aria-invalid` and `aria-required`, announces
+    added and removed pills in a polite live region, and takes `labels` for translation.
+  - **`Field` gains optional `descriptionId` and `errorId`,** so a control can point
+    `aria-describedby` at its messages. Without them it renders exactly as before.
+- **The kit's own pages look the same.** The kit renders no `Pillbox`. Its `Input` fields
+  use `Field` but don't pass the new ids, so their markup is unchanged.
+  **Consumer action:** none. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.17.1` to follow.
+
 ## 1.1.118 — 2026-11-07
 
 ### Changed
