@@ -27,6 +27,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   comment from this release's `phpunit.xml`. Until you do, unset `DB_CONNECTION`,
   `DB_DATABASE` and `DB_URL` before running the tests if your environment sets them.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, react-fancy 6.18.1 installed, `composer test` 42 passed). In the scaffold,
+`composer test` also passed 42 with `DB_CONNECTION=pgsql` set in the environment, pointed
+at a host under the reserved `.invalid` domain, and made no attempt to reach it. On the
+kit before this fix, the same run failed the new test (`pgsql`, not `sqlite`) and errored
+in all 21 Feature tests trying to connect to that host. The earlier checks still hold:
+- a probe placeholder on the login fields computes to the muted token;
+- the login Email field's resting outline is `#71717b` (zinc-500) in both modes, 4.83:1 on
+  `#ffffff` and 3.44:1 on `#1e1e24`;
+- the "Remember me" checkbox's `accent-color` is the page's `--color-blue-600` in light
+  mode and `--color-blue-500` in dark mode, with `color-scheme: dark` in dark mode.
+
+`/login`, `/register` and `/forgot-password` each still have exactly one `main`, with the
+h1 inside it and the home link in a `header`, and the card is 384px wide. `/` runs h1 then
+six h2s. The usual checks passed:
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores `dark` and
+  matches no `:focus-visible`, and a reload stays dark; Tabbing to the profile Save
+  button matches `:focus-visible`;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.121 — 2026-11-08
 
 ### Changed
