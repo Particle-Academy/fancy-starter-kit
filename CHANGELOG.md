@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.121 — 2026-11-08
+
+### Changed
+
+- **react-fancy 6.18.1** (was 6.18.0). The range moves from `^6.18.0` to `^6.18.1`.
+  `--fancy-accent-dark` now defaults to blue-500 instead of blue-600, so the checked colour
+  of native `Checkbox`, `CheckboxGroup` and `RadioGroup` meets WCAG 1.4.11's 3:1 on the
+  kit's dark surfaces: blue-600 was 2.84:1 on zinc-800 and 3.16:1 on `#1e1e24`, and
+  blue-500 is 3.96:1 and 4.41:1. Light mode stays blue-600.
+- **Visible on the kit's own pages:** in dark mode, the "Remember me" checkbox on login is
+  one step lighter when checked (blue-500 instead of blue-600). Light mode and the
+  unchecked box are unchanged.
+  **Consumer action:** none. An app that sets `--fancy-accent-dark` keeps its own colour.
+  In an app made from an earlier kit, `npm install @particle-academy/react-fancy@^6.18.1`
+  to follow.
+
 ## 1.1.120 — 2026-11-08
 
 ### Changed
