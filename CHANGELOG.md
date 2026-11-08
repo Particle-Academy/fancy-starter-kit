@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.124 — 2026-11-08
+
+### Changed
+
+- **react-fancy 6.19.1** (was 6.19.0). The range moves from `^6.19.0` to `^6.19.1`. White
+  text on a coloured fill now meets WCAG 1.4.3's 4.5:1 in both modes. Each solid `Button`,
+  solid `Badge` and selected `MultiSwitch` thumb uses the lightest shade of its hue where
+  white clears 4.5:1. For violet that is violet-600: white on the previous violet-500 was
+  4.40:1, and is now 5.89:1.
+- **Visible on the kit's own pages: the violet buttons are one step darker.** The submit
+  buttons on login, register, forgot-password, reset-password and the profile and password
+  settings, and the call-to-action buttons on the welcome page, are violet-600 at rest and
+  violet-700 on hover in light mode, and violet-700 at rest and violet-600 on hover in dark
+  mode. Each was one shade lighter before. The kit's two `Badge`s are `variant="soft"`, and
+  its ghost buttons and nav links are unchanged.
+  **Consumer action:** none. To keep the old shade, pass your own `className` (for example
+  `bg-violet-500`), knowing white text on it fails AA. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.19.1` to follow.
+
 ## 1.1.123 — 2026-11-08
 
 ### Changed
