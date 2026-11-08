@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.118 — 2026-11-07
+
+### Changed
+
+- **react-fancy 6.17.0** (was 6.16.0). The range moves from `^6.16.0` to `^6.17.0`. Two
+  changes:
+  - **`keepMounted` on `Drawer` and `Modal`:** opt-in and off by default. With it, a closed
+    overlay keeps its children in the tree, hidden, inert and `aria-hidden`, so state such
+    as a playing `<audio>` element or a half-filled form survives close and reopen.
+  - **Native checkboxes and radios lose dead background classes:** Checkbox, CheckboxGroup
+    and RadioGroup no longer carry the `--fancy-input` background pair, which the browser
+    never painted on a native control. `accent-color` and the dark `color-scheme` remain.
+- **The kit's own pages look the same.** The kit renders no `Drawer` or `Modal`, and the
+  classes removed from its "Remember me" checkbox never painted.
+  **Consumer action:** none. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.17.0` to follow.
+
 ## 1.1.117 — 2026-11-07
 
 ### Changed
