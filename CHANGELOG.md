@@ -21,6 +21,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   **Consumer action:** none. In an app made from an earlier kit,
   `npm install @particle-academy/react-fancy@^6.16.0` to follow.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, react-fancy 6.16.0 installed, `composer test` 41 passed). The 1.1.115 and
+1.1.116 checks still hold:
+- a probe placeholder on the login fields computes to the muted token;
+- the login Email field's resting outline is `#71717b` (zinc-500) in both modes, 4.83:1 on
+  `#ffffff` and 3.44:1 on `#1e1e24`;
+- in dark mode the "Remember me" checkbox computes `color-scheme: dark`, with a blue-600
+  `accent-color`.
+
+`/login`, `/register` and `/forgot-password` each still have exactly one `main`, with the
+h1 inside it and the home link in a `header`, and the card is 384px wide. `/` runs h1 then
+six h2s. The usual checks passed:
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores `dark` and
+  matches no `:focus-visible`, and a reload stays dark; Tabbing to the profile Save
+  button matches `:focus-visible`;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.116 — 2026-11-07
 
 ### Changed
