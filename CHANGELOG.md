@@ -28,6 +28,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `--fancy-error-dark`) beside your other `--fancy-*` tokens. In an app made from an
   earlier kit, `npm install @particle-academy/react-fancy@^6.19.0` to follow.
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, react-fancy 6.19.0 installed, `composer test` 42 passed, `DB_*` unset).
+Logging in with a wrong password stays on `/login` and shows "These credentials do not
+match our records." in a `p` whose computed `color` is:
+- light mode: `oklch(0.577 0.245 27.325)` (`#e7000b`), the page's own `--color-red-600`,
+  4.77:1 on the field's `#ffffff`;
+- dark mode: `oklch(0.704 0.191 22.216)` (`#ff6467`), the page's own `--color-red-400`,
+  5.74:1 on the field's `#1e1e24`.
+
+The earlier checks still hold:
+- a probe placeholder on the login fields computes to the muted token;
+- the login Email field's resting outline is `#71717b` (zinc-500) in both modes, 4.83:1 on
+  `#ffffff` and 3.44:1 on `#1e1e24`;
+- the "Remember me" checkbox's `accent-color` is the page's `--color-blue-600` in light
+  mode and `--color-blue-500` in dark mode, with `color-scheme: dark` in dark mode.
+
+`/login`, `/register` and `/forgot-password` each still have exactly one `main`, with the
+h1 inside it and the home link in a `header`, and the card is 384px wide. `/` runs h1 then
+six h2s. The usual checks passed:
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the theme toggle, mouse-clicked to dark, puts `dark` on `<html>`, stores `dark` and
+  matches no `:focus-visible`, and a reload stays dark; Tabbing to the profile Save
+  button matches `:focus-visible`;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.122 — 2026-11-08
 
 ### Fixed
