@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.117 — 2026-11-07
+
+### Changed
+
+- **react-fancy 6.16.0** (was 6.15.1). The range moves from `^6.15.1` to `^6.16.0`. It adds
+  `StreamingAudio`, a controlled player for server-hosted MP3s and Icecast / Shoutcast live
+  streams on the native `<audio>` element, on the subpath
+  `@particle-academy/react-fancy/streaming-audio`. Nothing else changed.
+- **The kit's own pages look the same.** The kit doesn't render `StreamingAudio`.
+  **Consumer action:** none. In an app made from an earlier kit,
+  `npm install @particle-academy/react-fancy@^6.16.0` to follow.
+
 ## 1.1.116 — 2026-11-07
 
 ### Changed
