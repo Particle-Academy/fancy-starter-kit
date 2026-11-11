@@ -9,6 +9,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.125 — 2026-11-11
+
+### Fixed
+
+- **Charts work in a fresh app.** The kit installs `@particle-academy/fancy-echarts` but
+  mounts with `appRoot: false`, which skips the chart registration `FancyAppRoot` does, so
+  the first `<EChart>` hit an unregistered chart type and could take the page down. The new
+  `resources/js/charts.ts` calls `registerAll()` and `registerBuiltinThemes()`, and both
+  `app.tsx` and `ssr.tsx` import it before anything renders. Found by the lab's full-kit
+  benchmark.
+  **Cost:** the client bundle grows from 477 kB to 1,498 kB minified (142 kB to 481 kB
+  gzip), and Vite now prints its 500 kB chunk-size notice. **Consumer action:** in an app
+  made from an earlier kit, copy `resources/js/charts.ts` and add `import './charts';` to
+  both entries if you use charts. If you do not, delete the file and the two imports to
+  keep the old bundle size.
+- **The SSR port is configurable.** `ssr.tsx` passed no port, so the SSR server always took
+  13714 whatever `INERTIA_SSR_URL` said, and two apps could not run SSR on one machine. It
+  now listens on the port in `INERTIA_SSR_URL`, the URL Laravel already sends render requests
+  to, so the two cannot disagree, and it fails at start with a clear error if that URL is not
+  valid. `.env.example` now lists `INERTIA_SSR_URL=http://127.0.0.1:13714`.
+  **Consumer action:** none unless you changed `INERTIA_SSR_URL`; if you did, the SSR server
+  now actually follows it. In an app made from an earlier kit, copy the `ssrPort()` helper
+  from `resources/js/ssr.tsx`.
+- `bootstrap/app.php` imports its two middleware classes instead of naming them inline, so
+  `vendor/bin/pint --test` passes on a fresh scaffold. No behaviour change.
+
+Checked: `INERTIA_SSR_URL=http://127.0.0.1:13799 node bootstrap/ssr/ssr.js` started on
+13799 and rendered the Welcome page there, with nothing on 13714; unset, it started on
+13714; `INERTIA_SSR_ENABLED=true INERTIA_SSR_URL=http://127.0.0.1:13801 php artisan
+inertia:start-ssr` started on 13801. Not checked in a browser: an `<EChart>` mounting
+client-side in a fresh scaffold.
+
 ## 1.1.124 — 2026-11-08
 
 ### Changed

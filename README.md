@@ -109,6 +109,18 @@ To turn it on:
 Inertia falls back to client rendering whenever the SSR daemon isn't reachable,
 so leaving SSR off — or forgetting to start the daemon — never breaks the app.
 
+The SSR server listens on the port in `INERTIA_SSR_URL` (default
+`http://127.0.0.1:13714`), the same URL Laravel sends its render requests to.
+To run SSR for two apps on one machine, give each its own port there.
+
+## Charts
+
+`@particle-academy/fancy-echarts` is installed, and `resources/js/charts.ts`
+registers every chart type and the built-in themes, imported by both entries, so
+an `<EChart>` works out of the box. That puts all of ECharts in the client bundle
+(about 1 MB minified). If your app has no charts, delete `charts.ts` and its two
+imports; if it uses a few types, register only those (see the file).
+
 ## Sessions, queues and cache
 
 The kit uses Laravel's **`database`** driver for all three
