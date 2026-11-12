@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 1.1.126 — 2026-11-12
 
+This release also carries the notes of 1.1.125, which was never tagged: the chart and SSR
+port fixes under "Fixed" below.
+
 ### Changed
 
 - **react-fancy 6.21.0** (was 6.19.1). The range moves from `^6.19.1` to `^6.21.0`. New
@@ -41,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 "@particle-academy/fancy-inertia@>=0.15.0 <2.0"` to follow.
 
 Bundle: the main client bundle is 477.75 kB minified, 141.86 kB gzip (477.23 / 141.88 kB in
-1.1.125); the on-demand ECharts chunk is 1,020.31 kB, 338.67 kB gzip (1,018.63 / 338.27 kB).
+the untagged 1.1.125 build); the on-demand ECharts chunk is 1,020.31 kB, 338.67 kB gzip (1,018.63 / 338.27 kB).
 
 Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
 `npm run dev`, react-fancy 6.21.0, fancy-inertia 0.15.0, fancy-echarts 6.3.0 and
@@ -56,9 +59,11 @@ fancy-app-update 0.8.0 installed, `composer test` 52 passed, `DB_*` unset):
   colour-scheme, error-colour, theme-toggle and `:focus-visible` checks of 1.1.124 still hold;
 - 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
 
-## 1.1.125 — 2026-11-11
-
 ### Fixed
+
+These fixes were prepared as 1.1.125 (2026-11-11), which was never tagged; they ship in
+this release.
+
 
 - **Charts work in a fresh app, loaded on demand.** The kit installs
   `@particle-academy/fancy-echarts` but mounts with `appRoot: false`, which skips the chart
