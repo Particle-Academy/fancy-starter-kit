@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.1.127 — 2026-11-12
+
 ### Fixed
 
 - **Every server-rendered page had two `<title>` elements** (lab finding K21). The root
