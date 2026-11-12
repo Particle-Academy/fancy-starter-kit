@@ -13,17 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- **Charts work in a fresh app.** The kit installs `@particle-academy/fancy-echarts` but
-  mounts with `appRoot: false`, which skips the chart registration `FancyAppRoot` does, so
-  the first `<EChart>` hit an unregistered chart type and could take the page down. The new
-  `resources/js/charts.ts` calls `registerAll()` and `registerBuiltinThemes()`, and both
-  `app.tsx` and `ssr.tsx` import it before anything renders. Found by the lab's full-kit
-  benchmark.
-  **Cost:** the client bundle grows from 477 kB to 1,498 kB minified (142 kB to 481 kB
-  gzip), and Vite now prints its 500 kB chunk-size notice. **Consumer action:** in an app
-  made from an earlier kit, copy `resources/js/charts.ts` and add `import './charts';` to
-  both entries if you use charts. If you do not, delete the file and the two imports to
-  keep the old bundle size.
+- **Charts work in a fresh app, loaded on demand.** The kit installs
+  `@particle-academy/fancy-echarts` but mounts with `appRoot: false`, which skips the chart
+  registration `FancyAppRoot` does, so the first `<EChart>` hit an unregistered chart type
+  and could take the page down. Found by the lab's full-kit benchmark.
+  The new `<Chart>` (`resources/js/components/Chart.tsx`) takes the same props as `<EChart>`
+  plus `height` (default 300 px). It loads `components/chart-runtime.ts`, which imports
+  fancy-echarts and calls `registerAll()` and `registerBuiltinThemes()`, through a dynamic
+  `import()` after the chart mounts. The server, and the browser's hydrating render, show a
+  placeholder of the same height, so the markup matches and the layout does not jump. The
+  Dashboard renders a sample chart.
+  **Bundle:** the main client bundle is unchanged from 1.1.124 (`app-*.js` 477 kB minified,
+  142 kB gzip). ECharts is its own chunk (1,019 kB, 338 kB gzip), downloaded only by a page
+  that renders a chart. Registering from both entries instead would have put it on every
+  page (1,498 kB, 481 kB gzip). Server-rendered HTML of pages without a chart is unchanged.
+  **Consumer action:** in an app made from an earlier kit, copy `components/Chart.tsx` and
+  `components/chart-runtime.ts`, and render `<Chart>` rather than importing `<EChart>`: a
+  value import of fancy-echarts in a page puts all of ECharts back into that page's bundle.
 - **The SSR port is configurable.** `ssr.tsx` passed no port, so the SSR server always took
   13714 whatever `INERTIA_SSR_URL` said, and two apps could not run SSR on one machine. It
   now listens on the port in `INERTIA_SSR_URL`, the URL Laravel already sends render requests
@@ -38,8 +44,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Checked: `INERTIA_SSR_URL=http://127.0.0.1:13799 node bootstrap/ssr/ssr.js` started on
 13799 and rendered the Welcome page there, with nothing on 13714; unset, it started on
 13714; `INERTIA_SSR_ENABLED=true INERTIA_SSR_URL=http://127.0.0.1:13801 php artisan
-inertia:start-ssr` started on 13801. Not checked in a browser: an `<EChart>` mounting
-client-side in a fresh scaffold.
+inertia:start-ssr` started on 13801. In headless Chrome with SSR on: `/login` fetched no
+chart code; `/dashboard` served the placeholder in its HTML, then fetched the chart chunks
+and drew a 240 px canvas, with no console errors or warnings.
 
 ## 1.1.124 — 2026-11-08
 

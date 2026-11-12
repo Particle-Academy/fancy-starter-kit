@@ -115,11 +115,17 @@ To run SSR for two apps on one machine, give each its own port there.
 
 ## Charts
 
-`@particle-academy/fancy-echarts` is installed, and `resources/js/charts.ts`
-registers every chart type and the built-in themes, imported by both entries, so
-an `<EChart>` works out of the box. That puts all of ECharts in the client bundle
-(about 1 MB minified). If your app has no charts, delete `charts.ts` and its two
-imports; if it uses a few types, register only those (see the file).
+`@particle-academy/fancy-echarts` is installed. Render charts with
+`<Chart option={...} height={240} />` from `resources/js/components/Chart.tsx`
+(the Dashboard has one). It loads ECharts, and registers every chart type and
+the built-in themes (`components/chart-runtime.ts`), on demand: a separate chunk
+fetched the first time a page mounts a chart. Pages without a chart never
+download it, and the server renders a placeholder of the same height.
+
+Import `<Chart>`, not `<EChart>`: a value import of `@particle-academy/fancy-echarts`
+in a page puts all of ECharts (about 1 MB minified) back into that page's bundle.
+If your app uses only a few chart types, register just those in
+`chart-runtime.ts`.
 
 ## Sessions, queues and cache
 

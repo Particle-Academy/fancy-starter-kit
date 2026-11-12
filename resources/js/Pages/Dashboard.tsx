@@ -1,5 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { Badge } from '@particle-academy/react-fancy';
+import { Chart } from '@/components/Chart';
 import { AppLayout } from '@/layouts/AppLayout';
 
 type Auth = { user: { name: string } | null };
@@ -9,6 +10,13 @@ const CARDS = [
     { title: 'Add a component', blurb: 'npx fancy-cli add <name> vendors the source straight into your app.', href: 'https://ui.particle.academy/docs', external: true },
     { title: 'Account settings', blurb: 'Update your profile and password.', href: '/settings/profile', external: false },
 ];
+
+const SAMPLE_CHART = {
+    tooltip: { trigger: 'axis' as const },
+    xAxis: { type: 'category' as const, data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+    yAxis: { type: 'value' as const },
+    series: [{ name: 'Visits', type: 'line' as const, smooth: true, data: [120, 200, 150, 280, 240, 310, 290] }],
+};
 
 export default function Dashboard() {
     const user = usePage<{ auth: Auth }>().props.auth?.user;
@@ -51,6 +59,14 @@ export default function Dashboard() {
                     );
                 })}
             </div>
+
+            <section className="mt-8 rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+                <h2 className="font-semibold text-zinc-900 dark:text-zinc-100">Sample chart</h2>
+                <p className="mt-1 text-sm text-zinc-500">
+                    Charts load on demand: this page fetches ECharts only because it renders one.
+                </p>
+                <Chart data-chart="sample" className="mt-4" height={240} option={SAMPLE_CHART} />
+            </section>
         </AppLayout>
     );
 }
