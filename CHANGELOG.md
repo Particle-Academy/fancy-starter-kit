@@ -9,6 +9,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## 1.1.126 — 2026-11-12
+
+### Changed
+
+- **react-fancy 6.21.0** (was 6.19.1). The range moves from `^6.19.1` to `^6.21.0`. New
+  components you can use straight away: `ContentReaction` (emoji reactions on a comment,
+  post or message), `ImagePill` (the composer's image pill, for sent messages) and
+  `HotkeyCapture` (records a keyboard shortcut); new `--fancy-success` / `--fancy-on-success`
+  theme tokens; `PromptInput` gains `beforeSend` and accepts any recorded `submitKey`.
+  Two behaviour changes upstream, neither used by the kit's own pages: a directional
+  `Carousel` now renders every slide (pass `keepMounted={false}` for the old
+  active-only rendering), and `PromptInput` with `sendButton="icon"` now draws the
+  send-key hint (pass `showHint={false}` to hide it).
+- **fancy-inertia 0.15.0** (was 0.14.1). The range moves from `>=0.14.1 <2.0` to
+  `>=0.15.0 <2.0`. Security: the SSR server now listens on `127.0.0.1` by default instead
+  of every network interface. The kit's `INERTIA_SSR_URL` already points at
+  `http://127.0.0.1:13714`, so nothing changes for an app where Laravel and the SSR
+  process share a machine.
+  **Consumer action:** only if your app server reaches the SSR process from another host
+  or container, pass `host` to `createFancyServer` in `resources/js/ssr.tsx` (for example
+  `host: "0.0.0.0"`) and keep that port off any public network.
+- **fancy-echarts 6.3.0** (was 6.2.0). The range moves from `^6.2.0` to `^6.3.0`. A chart
+  whose type was never registered now reports the missing type by name (and through the
+  new optional `onRenderError`) instead of taking the whole page down.
+- **fancy-app-update 0.8.0** (was 0.7.1), installed through fancy-inertia and fancy-pwa;
+  only the lockfile moves. `pingUrl` now accepts an array.
+
+**Consumer action:** none for the kit's own pages. In an app made from an earlier kit,
+`npm install @particle-academy/react-fancy@^6.21.0 @particle-academy/fancy-echarts@^6.3.0
+"@particle-academy/fancy-inertia@>=0.15.0 <2.0"` to follow.
+
+Bundle: the main client bundle is 477.75 kB minified, 141.86 kB gzip (477.23 / 141.88 kB in
+1.1.125); the on-demand ECharts chunk is 1,020.31 kB, 338.67 kB gzip (1,018.63 / 338.27 kB).
+
 ## 1.1.125 — 2026-11-11
 
 ### Fixed
