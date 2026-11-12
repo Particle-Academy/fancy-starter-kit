@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > release that introduced it; earlier versions are described by their git tags.
 > Backfilling is tracked separately.
 
+## [Unreleased]
+
+### Fixed
+
+- **Every server-rendered page had two `<title>` elements** (lab finding K21). The root
+  template's `<title inertia>` sat beside `@inertiaHead`, so the first byte carried the app
+  name AND the page's own title from the SSR head: an invalid document, and a crawler or
+  link preview, which reads the first, saw "Fancy" on every page. `app.blade.php` now uses
+  Inertia 3's `<x-inertia::head>` component with the app name as its fallback, so the
+  document has the SSR head's title when SSR answers and the app name only when it does
+  not. `tests/Feature/DocumentTitleTest.php` renders pages through the built SSR bundle and
+  asserts exactly one title. **In an app made from an earlier kit:** in
+  `resources/views/app.blade.php`, delete the `<title inertia>` line and replace
+  `@inertiaHead` with
+  `<x-inertia::head><title>{{ config('app.name') }}</title></x-inertia::head>`.
+
 ## 1.1.126 — 2026-11-12
 
 This release also carries the notes of 1.1.125, which was never tagged: the chart and SSR

@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title inertia>{{ config('app.name', 'Fancy') }}</title>
-
     {{-- Apply the saved/system theme before first paint to avoid a flash. --}}
     <script>
         (function () {
@@ -27,7 +25,14 @@
     @fonts
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
-    @inertiaHead
+    {{--
+        The server-rendered head when SSR answers, which carries the page's own
+        <title>; the app name as the title when it does not. Never both: two
+        <title> elements is an invalid document, and a crawler reads the first.
+    --}}
+    <x-inertia::head>
+        <title>{{ config('app.name', 'Fancy') }}</title>
+    </x-inertia::head>
 </head>
 <body class="min-h-screen bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
     @inertia
