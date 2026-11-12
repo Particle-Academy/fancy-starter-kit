@@ -43,6 +43,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Bundle: the main client bundle is 477.75 kB minified, 141.86 kB gzip (477.23 / 141.88 kB in
 1.1.125); the on-demand ECharts chunk is 1,020.31 kB, 338.67 kB gzip (1,018.63 / 338.27 kB).
 
+Dev-mode smoke on a fresh, git-initialised scaffold of this release (headless Chromium,
+`npm run dev`, react-fancy 6.21.0, fancy-inertia 0.15.0, fancy-echarts 6.3.0 and
+fancy-app-update 0.8.0 installed, `composer test` 52 passed, `DB_*` unset):
+- the Dashboard's chart drew one canvas and no element carried `data-echart-error`;
+- register submitted by clicking the button, sign out, log in submitted by pressing Enter;
+- profile saved (303) and password changed (303), both confirmed in the database;
+- the login page's "Log in" button is still `#ffffff` on `#7f22fe` (violet-600, 5.89:1)
+  in light mode and on `#7008e7` (violet-700, 7.30:1) in dark mode;
+- `/login`, `/register` and `/forgot-password` each have exactly one `main` with the h1
+  inside it, and `/` runs h1 then six h2s; the placeholder, input-border, checkbox
+  colour-scheme, error-colour, theme-toggle and `:focus-visible` checks of 1.1.124 still hold;
+- 0 console errors and 0 warnings, with the listener proven by a planted error and warning.
+
 ## 1.1.125 — 2026-11-11
 
 ### Fixed
