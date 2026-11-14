@@ -11,6 +11,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.1.128 — 2026-11-13
+
+### Changed
+
+- **react-fancy 6.25.0** (was 6.21.0). The range moves from `^6.21.0` to `>=6.25.0 <7.0`,
+  the form the kit's other first-party packages already use. That only widens it, so
+  any version an app already has still resolves. What arrives is mostly accessibility
+  fixes:
+  - Modal and Drawer name their dialog, and the page behind an open Modal or viewport
+    Drawer is `inert` until it closes.
+  - Popover and Dropdown triggers sit on their child, with no wrapper `<span>`.
+  - ColorPicker, StickyNote, Kanban and CodeView have accessible names.
+  - Table gains `Table.Foot`.
+
+  The kit's own pages use none of the changed components, so **an app made from an
+  earlier kit has nothing to do** unless its own code does:
+  - Change a selector such as `[data-react-fancy-dropdown-trigger] > button` to
+    `button[data-react-fancy-dropdown-trigger]`.
+  - Change `[data-react-fancy-color-picker] > button` to
+    `[data-react-fancy-color-picker-swatch]`.
+  - Pass `haspopup="menu"` to a Popover that is really a menu.
+
+  The details are in react-fancy's CHANGELOG, 6.22.0 to 6.25.0.
+
 ## 1.1.127 — 2026-11-12
 
 ### Fixed
