@@ -27,7 +27,7 @@
     "dependencies": {
         "@inertiajs/react": "^3.6.1",
         "@particle-academy/fancy-echarts": "^6.3.0",
-        "@particle-academy/fancy-inertia": ">=0.15.0 <2.0",
+        "@particle-academy/fancy-inertia": ">=0.16.0 <2.0",
         "@particle-academy/fancy-pwa": ">=0.2.0 <2.0",
         "@particle-academy/fancy-query": ">=0.9.0 <2.0",
         "@particle-academy/fancy-screens": ">=0.7.1 <2.0",

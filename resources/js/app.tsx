@@ -3,8 +3,7 @@ import { setupFancyApp } from '@particle-academy/fancy-inertia';
 import { initTheme, Toast } from '@particle-academy/react-fancy';
 import type { ComponentType, ReactNode } from 'react';
 import '@particle-academy/react-fancy/styles.css';
-
-const appName = import.meta.env.VITE_APP_NAME ?? 'Fancy';
+import { pageTitle } from './title';
 
 // The inline script in app.blade.php has already painted the right theme; this
 // is what keeps it right afterwards, by following the OS while the preference is
@@ -23,7 +22,7 @@ const providers = (outlet: ReactNode): ReactNode => (
 );
 
 createInertiaApp({
-    title: (title) => (title ? `${title} — ${appName}` : appName),
+    title: pageTitle,
     resolve: (name) => {
         const pages = import.meta.glob<{ default: ComponentType }>('./Pages/**/*.tsx');
         const page = pages[`./Pages/${name}.tsx`];

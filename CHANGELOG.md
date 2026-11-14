@@ -13,7 +13,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 1.1.128 — 2026-11-13
 
+### Fixed
+
+- **The server-rendered `<title>` is the one the browser shows** (completing lab finding
+  K21). The client formats a title as "Log in — Fancy", but the SSR entry passed no title
+  callback, so the first byte said only "Log in" and a crawler or link preview read that.
+  `resources/js/title.ts` now holds the one `pageTitle` callback, and both `app.tsx` and
+  `ssr.tsx` pass it (`createFancyServer({ title })`, new in fancy-inertia 0.16.0).
+  `tests/Feature/DocumentTitleTest.php` asserts the exact title on the first byte. **In an
+  app made from an earlier kit:** pass your `createInertiaApp` title callback to
+  `createFancyServer` as `title` too.
+
 ### Changed
+
+- **fancy-inertia 0.16.0** (was 0.15.0), for the `title` option above. The range moves
+  from `>=0.15.0 <2.0` to `>=0.16.0 <2.0`.
 
 - **react-fancy 6.25.0** (was 6.21.0). The range moves from `^6.21.0` to `>=6.25.0 <7.0`,
   the form the kit's other first-party packages already use. That only widens it, so

@@ -86,6 +86,23 @@ test('a server-rendered page has exactly one title, and it is the page title', f
     'register' => ['/register', 'Create your account'],
 ]);
 
+/*
+ * The first byte carries the SAME title the browser shows. The client entry
+ * formats it as "<page> — <app>", but createFancyServer took no title callback
+ * before fancy-inertia 0.16.0, so the server rendered the bare page title: a
+ * crawler read "Log in" where a person saw "Log in — Fancy". ssr.tsx now passes
+ * the callback app.tsx uses. The app name is baked in at build time from
+ * VITE_APP_NAME, which .env.example sets to APP_NAME.
+ */
+test('the server-rendered title is the one the browser shows', function (string $url, string $title) {
+    $html = withSsrServer(fn () => $this->get($url)->assertOk()->getContent());
+
+    expect(documentTitles($html))->toBe([$title.' — '.config('app.name')]);
+})->with([
+    'welcome' => ['/', 'Welcome'],
+    'login' => ['/login', 'Log in'],
+]);
+
 test('without SSR the document still has exactly one title: the app name', function () {
     config(['inertia.ssr.enabled' => false]);
 

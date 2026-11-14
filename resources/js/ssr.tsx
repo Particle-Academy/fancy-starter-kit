@@ -1,6 +1,7 @@
 import { createFancyServer } from '@particle-academy/fancy-inertia/server';
 import { Toast } from '@particle-academy/react-fancy';
 import type { ComponentType, ReactNode } from 'react';
+import { pageTitle } from './title';
 
 /**
  * Server-side rendering entry. It renders each page inside the SAME Fancy
@@ -49,6 +50,9 @@ createFancyServer({
         });
         return pages[`./Pages/${name}.tsx`];
     },
+    // The same title callback as app.tsx, so the first byte's <title> is the
+    // one the browser shows (fancy-inertia 0.16.0).
+    title: pageTitle,
     providers,
     appRoot: false,
     port: ssrPort(),
