@@ -34,7 +34,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
-        // Fortify's GET routes render these Inertia pages (built with Fancy UI).
+        // Fortify's GET routes render these Inertia pages (built with Fancy Dev Kit).
         Fortify::loginView(fn () => Inertia::render('auth/Login'));
         Fortify::registerView(fn () => Inertia::render('auth/Register'));
         Fortify::requestPasswordResetLinkView(fn () => Inertia::render('auth/ForgotPassword'));

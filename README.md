@@ -1,15 +1,15 @@
-# Fancy UI — Laravel starter kit
+# Fancy Dev Kit — Laravel starter kit
 
 [![Fancified](art/fancified.svg)](https://particle.academy)
 
-A Laravel + Inertia + React 19 + Tailwind v4 starter kit with **Fancy UI**
+A Laravel + Inertia + React 19 + Tailwind v4 starter kit with **Fancy Dev Kit**
 preinstalled — use it in place of the official `react` / `vue` / `livewire`
-starter kits when you want to build on the [Fancy UI](https://ui.particle.academy)
+starter kits when you want to build on the [Fancy Dev Kit](https://ui.particle.academy)
 component suite.
 
 It ships **Fancy Core** (`react-fancy` + `fancy-inertia` + `fancy-query`), full
 **Fortify auth** (login, register, password reset, dashboard, profile/password
-settings) with every page built on Fancy UI, and a Fancy-branded welcome page
+settings) with every page built on Fancy Dev Kit, and a Fancy-branded welcome page
 with jump-off points to grow your app.
 
 ## Create a new app
@@ -31,7 +31,7 @@ Then open http://localhost:8000.
   (the `setupFancyApp` client entry), `@particle-academy/fancy-query`
 - **Fortify auth** — login / register / forgot + reset password, a protected
   dashboard, and profile / password settings — all rendered as Inertia pages
-  built with Fancy UI primitives
+  built with Fancy Dev Kit primitives
 
 ```
 resources/js/
@@ -88,7 +88,7 @@ use Database\Factories\Support\FakeData;
   same sequence every run, on every machine.
 
 Why: Faker has had no release or commit since February 2026, which fails the
-Fancy UI rule that every third-party dependency has been maintained within the
+Fancy Dev Kit rule that every third-party dependency has been maintained within the
 last three months. If you would rather use it anyway, `composer require --dev
 fakerphp/faker` brings `fake()` back and nothing in the kit needs to change.
 

@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Rebranded the display name to Fancy Dev Kit (for SaaSy Agents). Package names, the npm scope, `fancy-cli`, the `fancy-ui` MCP server id and plugin name, and every URL are unchanged, so nothing to do.
+
 ## 1.1.128 — 2026-11-13
 
 ### Fixed

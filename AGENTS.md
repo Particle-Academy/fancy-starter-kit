@@ -1,14 +1,14 @@
-# Fancy UI application guide
+# Fancy Dev Kit application guide
 
-This application is built from the Fancy UI Laravel starter kit:
+This application is built from the Fancy Dev Kit Laravel starter kit:
 
 - Laravel 13 and PHP 8.4+
 - Inertia 3 with React 19 and TypeScript
 - Tailwind CSS 4 and Vite
-- Fancy UI (`react-fancy`, `fancy-inertia`, and `fancy-query`)
+- Fancy Dev Kit (`react-fancy`, `fancy-inertia`, and `fancy-query`)
 - Laravel Fortify authentication
 
-## Build with Fancy UI
+## Build with Fancy Dev Kit
 
 - Prefer components from `@particle-academy/react-fancy` before creating an
   application-local primitive.

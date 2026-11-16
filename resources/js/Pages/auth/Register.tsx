@@ -17,7 +17,7 @@ export default function Register() {
     };
 
     return (
-        <AuthLayout title="Create your account" description="Start building with Fancy UI.">
+        <AuthLayout title="Create your account" description="Start building with Fancy Dev Kit.">
             <form onSubmit={submit} className="flex flex-col gap-4">
                 <Input
                     label="Name"

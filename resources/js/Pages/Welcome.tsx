@@ -78,7 +78,7 @@ function Shell({ children }: { children: ReactNode }) {
             <footer className="border-t border-zinc-200 py-6 text-center text-sm text-zinc-500 dark:border-zinc-800">
                 Built with{' '}
                 <a href="https://ui.particle.academy" className="font-medium text-violet-500 hover:underline">
-                    Fancy UI
+                    Fancy Dev Kit
                 </a>{' '}
                 · Laravel + Inertia + React 19 + Tailwind v4 · MIT
             </footer>
@@ -94,10 +94,10 @@ export default function Welcome() {
             {/* Hero */}
             <section className="mx-auto max-w-6xl px-6 pt-20 pb-12 text-center">
                 <Badge color="violet" variant="soft">
-                    Fancy UI starter kit
+                    Fancy Dev Kit starter kit
                 </Badge>
                 <h1 className="mx-auto mt-5 max-w-3xl text-balance text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
-                    Your Laravel app, with Fancy UI already wired in.
+                    Your Laravel app, with Fancy Dev Kit already wired in.
                 </h1>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-500">
                     Laravel + Inertia + React 19 + Tailwind v4, with{' '}
