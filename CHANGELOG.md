@@ -11,9 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.129] - 2026-11-16
+
+### Security
+
+- **laravel/framework 13.42.0** (was 13.34.0), past Dependabot's concurrency-injection
+  advisory fixed in 13.40.0; laravel/prompts 0.3.27 (was 0.3.21) with it. Lockfile only;
+  the `^13.0` requirement is unchanged. **In an app made from an earlier kit:** run
+  `composer update laravel/framework laravel/prompts`.
+
 ### Changed
 
 - Rebranded the display name to Fancy Dev Kit (for SaaSy Agents). Package names, the npm scope, `fancy-cli`, the `fancy-ui` MCP server id and plugin name, and every URL are unchanged, so nothing to do.
+- **react-fancy 6.27.0** (was 6.25.0; range `>=6.27.0 <7.0`) and **fancy-query 0.10.0**
+  (was 0.9.1; range `>=0.10.0 <2.0`). react-fancy 6.26 makes the `Field`, `Checkbox` and
+  `Switch` roots `relative`, so the server-rendered login and register markup gains that
+  class (the SSR fixtures are updated); nothing else in the kit changes. Nothing to do.
 
 ## 1.1.128 — 2026-11-13
 
