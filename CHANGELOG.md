@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.130] - 2026-11-16
+
+### Changed
+
+- **react-fancy 6.28.0** (was 6.27.0): PromptInput takes `attachments={false}` to turn
+  attaching off (CC-fancy-0043). Additive; the kit's own pages do not use PromptInput.
+  The floor is now `>=6.28.0 <7.0`. **In an app made from an earlier kit:** run
+  `npm update @particle-academy/react-fancy` if you want the new prop; nothing else to do.
+
 ## [1.1.129] - 2026-11-16
 
 ### Security
