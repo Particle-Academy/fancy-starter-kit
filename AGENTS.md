@@ -8,9 +8,11 @@ This application is built from the Fancy Dev Kit Laravel starter kit:
 - Fancy Dev Kit (`react-fancy`, `fancy-inertia`, and `fancy-query`)
 - Laravel Fortify authentication
 
-This file is how an agent builds with the Fancy Dev Kit here. What the kit is,
-is in [README.md](./README.md). Commands, tests, fake data and the checks to
-run before finishing a change are in [CONTRIBUTING.md](./CONTRIBUTING.md).
+This file is the full guide to building this application with the Fancy Dev
+Kit. `CLAUDE.md` is a symlink to it, so Claude Code reads it whenever it works
+on the app. What the kit is, is in [README.md](./README.md).
+[CONTRIBUTING.md](./CONTRIBUTING.md) is only for maintainers of the starter kit
+itself.
 
 ## Create an app from the kit
 
@@ -50,6 +52,42 @@ agents:
 
 Purely visual components only need a clear, typed authoring API.
 
+## Commands
+
+```bash
+composer run setup
+composer run dev
+composer test
+npm run build
+vendor/bin/pint --dirty
+```
+
+Tests are written with Pest. `tests/Pest.php` binds every test in
+`tests/Feature` to `Tests\TestCase` with `RefreshDatabase`; write new tests as
+`test()` / `it()` closures. `composer test` and `php artisan test` both run
+Pest.
+
+`npm run build` produces both client and SSR bundles. Keep SSR-safe code in
+shared modules and isolate browser-only APIs behind client boundaries.
+
+## Factories and fake data
+
+`fakerphp/faker` is not installed, so Laravel's `fake()` helper does not exist
+here (Laravel only defines it when Faker is present) — calling it fails with
+"Call to undefined function fake()". Use the application's own generator:
+
+```php
+use Database\Factories\Support\FakeData;
+
+FakeData::shared()->name();
+FakeData::shared()->unique()->safeEmail();
+FakeData::shared()->seed(1234); // repeatable sequence
+```
+
+It covers only the formatters this app uses. When a factory needs another kind
+of value, add a public method to `database/factories/Support/FakeData.php` with
+a test in `tests/Unit/FakeDataTest.php`, rather than installing Faker.
+
 ## Adding Fancy components
 
 Use the registry-backed CLI rather than copying components from package source:
@@ -73,7 +111,7 @@ component, `install-instructions` for its exact install commands, and
 ## Traps
 
 - **There is no `fake()`** (Faker is not installed). Use
-  `Database\Factories\Support\FakeData`; see CONTRIBUTING.md.
+  `Database\Factories\Support\FakeData`; see "Factories and fake data" above.
 - **Chart pages:** import `<Chart>` from `resources/js/components/Chart.tsx`,
   not `<EChart>` from `@particle-academy/fancy-echarts`. A value import of
   fancy-echarts puts all of ECharts back into that page's bundle.
@@ -82,6 +120,14 @@ component, `install-instructions` for its exact install commands, and
 - **Redis needs a client installed first** (`phpredis` extension or
   `predis/predis`); the kit defaults to the `database` driver for sessions,
   queues and cache.
+
+## Before finishing a change
+
+- Run the focused tests for the changed behavior.
+- Run `composer test` for backend or full-stack changes.
+- Run `npm run build` for frontend, dependency, or configuration changes.
+- Run `vendor/bin/pint --dirty` after editing PHP.
+- Exercise changed interactive UI in dev mode and check the browser console.
 
 ## When you build with this kit
 

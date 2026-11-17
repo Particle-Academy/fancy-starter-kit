@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Docs:** the app guide is split in two, and both files land in every new app. `AGENTS.md` keeps how to build with the Fancy Dev Kit (the component rules, the interactive contract, adding components, the Fancy MCP catalog server, traps) and gains the agent note that was in the README. The commands, tests, fake data and before-finishing checks moved to a new `CONTRIBUTING.md`, which points back to `AGENTS.md`, and `CLAUDE.md` is now a symlink to `CONTRIBUTING.md`. The README points to the MCP server and to `AGENTS.md`. No code changed. An existing app needs nothing; a new app's Claude Code reads `CONTRIBUTING.md` by default.
+- **Docs:** `AGENTS.md` is the full guide to building the app with the Fancy Dev Kit (component rules, the interactive contract, commands, tests, fake data, adding components, the Fancy MCP catalog server, traps, before-finishing checks). It gains the agent note that was in the README. `CLAUDE.md` stays a symlink to `AGENTS.md`, so Claude Code in a new app reads the whole guide. This is the one Fancy repo where it does not point at `CONTRIBUTING.md`, because a new app's developer works ON their app. A new `CONTRIBUTING.md` holds notes for maintainers of the kit itself. The README points to the MCP server and to `AGENTS.md`. No code changed; an existing app needs nothing.
 
 ## [1.1.130] - 2026-11-16
 
