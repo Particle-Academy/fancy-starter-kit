@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **Changelog:** removed a stale, empty second `## [Unreleased]` heading that sat
+  above 1.1.40, so the file has one Unreleased section, at the top. Docs only;
+  nothing to do.
+
 ## [1.1.132] - 2026-11-18
 
 ### Changed
@@ -2012,8 +2018,6 @@ add the `initTheme` call in `resources/js/app.tsx`.
   dev mode broken for exactly that reason.
 
 ---
-
-## [Unreleased]
 
 ## [1.1.40] — 2026-08-11
 
