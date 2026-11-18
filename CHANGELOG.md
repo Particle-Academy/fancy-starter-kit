@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.132] - 2026-11-18
+
+### Changed
+
+- **react-fancy 6.29.0** (was 6.28.0): the Editor gains atomic inline tokens
+  (`useEditor().insertToken({ id, label })`, chips the caret steps over and
+  Backspace removes whole). Additive; the kit's own pages do not use them. The
+  floor is now `>=6.29.0 <7.0`. **In an app made from an earlier kit:** run
+  `npm update @particle-academy/react-fancy` if you want them; nothing else to do.
+
 ## [1.1.131] - 2026-11-17
 
 ### Changed
