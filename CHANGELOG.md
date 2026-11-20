@@ -11,8 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.133] - 2026-11-20
+
 ### Changed
 
+- **react-fancy 6.29.1** (was 6.29.0): Autocomplete options can now be picked by
+  mouse and touch, not only by keyboard. A fix, no API change. The floor is now
+  `>=6.29.1 <7.0`. **In an app made from an earlier kit:** run
+  `npm update @particle-academy/react-fancy`; nothing else to do.
 - CI: re-pin org third-party allowlist to 2614224
 
 ### Fixed
