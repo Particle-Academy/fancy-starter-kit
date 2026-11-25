@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.134] - 2026-11-25
+
+### Changed
+
+- **react-fancy 6.30.0** (was 6.29.1): `ContentRenderer` gains an optional
+  `fences` prop, so a host can render a fenced code block of a given language
+  (for example ```` ```mermaid ````) with its own component. `Popover.Content`
+  now keeps your `onMouseEnter` / `onMouseLeave`, and `Dropdown.Item` forwards
+  extra props. Additive; without `fences` every code block renders exactly as
+  before. The floor is now `>=6.30.0 <7.0`. **In an app made from an earlier
+  kit:** run `npm update @particle-academy/react-fancy`; nothing else to do.
+
 ## [1.1.133] - 2026-11-20
 
 ### Changed
